@@ -147,15 +147,10 @@ function initExperiment(stimuli) {
 
     let timeline = [];
 
-    // it's best practice to have *mouse click* user I/O first
     timeline.push(start_screen);
     timeline.push(preload_media);
     timeline.push(initialize_microphone);
     timeline.push(instructions);
-
-
-    // test/set audio level (sountest.js)
-    // timeline.push(test_audio);
 
     timeline.push({
         timeline: [trial_procedure],
