@@ -12,8 +12,8 @@
 }
 
 img.thumbnail {
-    width: 100px;
-    height: auto;
+    width: auto;
+    height: 100px;
     padding: 25px;
 }
 
