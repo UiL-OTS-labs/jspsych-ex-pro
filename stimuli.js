@@ -10,15 +10,73 @@ const FOLDER_IMG = "stimuli/img/";
 const GOODBYE_WAV = 'stimuli/wav/Goodbye.wav';
 const GREETING_WAV = 'stimuli/wav/Greeting.wav';
 
+function _prepare_images() {
+    function prepare_image(row, index, array) {
+        function sanitize_image(img_name) {
+            let img = img_name
+            if (img.split(".").pop() !== "png") {
+                img += ".png";
+            }
+            return `${FOLDER_IMG}${img}`
+        }
+        row.img = sanitize_image(row.img)
+        row.thumbnails.forEach((value, index, array) => {
+            if (value === null || value === undefined)
+                return
+            array[index] = sanitize_image(value);
+        });
+        array[index] = row;
+    }
 
-const PRACTICE_LIST = [
+    PRACTICE_LIST.forEach(prepare_image);
+    LIST_1.forEach(prepare_image);
+}
+
+function _prepare_wavs() {
+
+    function prepare_wav(row, index, array) {
+
+        function sanitize_wav(wav_name) {
+            let wav = wav_name;
+            if (wav.split(".").pop() !== "wav") {
+                wav += ".wav"
+            }
+            return `${FOLDER_WAV}${wav}`;
+        }
+
+        if (row.first !== undefined)
+            row.first = sanitize_wav(row.first);
+        if (row.second !== undefined)
+            row.second = sanitize_wav(row.second);
+        if (row.file !== undefined)
+            row.file = sanitize_wav(row.file);
+        array[index] = row;
+    }
+
+    PRACTICE_LIST.forEach(prepare_wav);
+    LIST_1.forEach(prepare_wav);
+    DELAYED_AUDIO.forEach(prepare_wav);
+    HESITANT_AUDIO.forEach(prepare_wav);
+}
+
+function prepare_stimuli() {
+    // only do this once.
+    if (prepare_stimuli.done === undefined) {
+        _prepare_images();
+        _prepare_wavs();
+        prepare_stimuli.done = true;
+    }
+}
+
+
+PRACTICE_LIST = [
     {id: "Practice1", img: "practice 1.png", first: "Practice1_1st.wav", second: "Practice1_2nd.wav",
      thumbnails: ["apple.png", "drill.png", "hammer.png", "lemon.png"]},
     {id: "Practice2", img: "practice 2.png", first: "Practice2_1st.wav", second: "Practice2_2nd.wav",
      thumbnails: [undefined, undefined, undefined, undefined]},
 ];
 
-const LIST_1 = [
+LIST_1 = [
 //    {id: "Trial1_pat", img: "1.png", first: "Trial1_pat_1st.wav", second: "Trial1_pat_2nd.wav",
 //     thumbnails: ["pat", "wipe", "feak", "beit"]},
 //    {id: "Trial2_pad", img: "2.png", first: "Trial2_pad_1st.wav", second: "Trial2_pad_2nd.wav",
@@ -168,19 +226,20 @@ function _extractObjectItems(items, keys) {
  * Returns {Array<string>} : An array with the sound files
  */
 function getImgStimuli() {
-    let ret = [];
-
-    ret = ret.concat(_extractObjectItems(PRACTICE_LIST, ["img", "thumbnails"]));
-    ret = ret.concat(_extractObjectItems(LIST_1, ["img", "thumbnails"]));
-
-    ret = ret.map( (item) => {
-        let temp = FOLDER_IMG + item;
-        if (temp.split(".").pop() !== "png") {
-            temp += ".png"
-        }
-
-        return temp;
+    prepare_stimuli();
+    let ret = PRACTICE_LIST.concat(LIST_1).flatMap( (item) => {
+        let array = [item.img];
+        item.thumbnails.forEach(
+            (thumb) => {
+                // When we have thumbnails extract them
+                if (thumb)
+                    array.push(thumb);
+            }
+        );
+        return array;
     })
+    
+    console.log(`img stims = ${ret}`);
 
     return ret;
 }
@@ -191,17 +250,23 @@ function getImgStimuli() {
  * Returns {Array<string>} : An array with the sound files
  */
 function getAudioStimuli() {
-    let ret = [];
-
-    ret = ret.concat(_extractObjectItems(PRACTICE_LIST, ["first", "second"]));
-    ret = ret.concat(_extractObjectItems(LIST_1, ["first", "second"]));
-    ret = ret.concat(_extractObjectItems(DELAYED_AUDIO, ["file"]));
-    ret = ret.concat(_extractObjectItems(HESITANT_AUDIO, ["file"]));
-
-    ret = ret.map((item) => FOLDER_WAV + item);
+    prepare_stimuli();
+    let ret = PRACTICE_LIST.concat(LIST_1).concat(DELAYED_AUDIO).concat(HESITANT_AUDIO)
+        .flatMap((item) => {
+            let temp = [];
+            if (item.first)
+                temp.push(item.first);
+            if (item.second)
+                temp.push(item.second);
+            if (item.file)
+                temp.push(item.file);
+            return temp;
+        });
 
     ret.push(GOODBYE_WAV);
     ret.push(GREETING_WAV);
+
+    console.log(`Audio stims = ${ret}`);
 
     return ret
 }

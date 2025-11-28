@@ -88,9 +88,22 @@ let end_screen = {
 let trial_procedure = {
     type: SoundBoardTrial,
     stimulus: () => {
-        let words = uil.randomization.randomShuffle(jsPsych.timelineVariable('thumbnails'))
-            .map(img => `<td><div class="word"><img class="thumbnail" src="./stimuli/img/${img}"/></div></td>`).join('');
-        let table = `<table><tr>${words}</tr></table>`
+        let words = uil.randomization.randomShuffle(jsPsych.timelineVariable('thumbnails'));
+        if (typeof words[0] === "string") {
+            let temp = words.map(
+                img => {
+                    return `<td><div class="word">
+                                <img class="thumbnail" src="${img}"/>
+                            </div></td>`;
+                }
+            ).join('');
+            words = temp;
+        }
+        else {
+            words = ""
+        }
+        
+        let table = `<table style="width:100%;"><tr>${words}</tr></table>`
 
         let img = jsPsych.timelineVariable('img');
         return `<div><img src="${img}"></div><div>${table}</div>`;
