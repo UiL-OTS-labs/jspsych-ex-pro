@@ -6,10 +6,6 @@
 
 let jsPsych = initJsPsych(
     {
-        exclusions: {
-            min_width: MIN_WIDTH,
-            min_height: MIN_HEIGHT
-        }
     }
 );
 
@@ -29,21 +25,6 @@ let start_screen = {
     }
 };
 
-    // <div style="display: flex; justify-content: space-around">
-    //     <div>
-    //         <div>你的屏幕</div>
-    //         <img src="stimuli/img/ins1.png" style="width:300px">
-    //         图1
-
-    //         <img src="stimuli/img/ins3.png" style="width:300px">
-    //         图3
-    //     </div>
-    //     <div>
-    //         <div></div>
-    //         <img src="stimuli/img/ins2.png" style="width:300px">
-    //         图2
-    //     </div>
-    // </div>
 
 let instructions = {
     type: SoundBoardTrial,
@@ -81,8 +62,8 @@ let instructions = {
 let preload_media = {
     type: jsPsychPreload,
     message: PRELOAD_MSG,
-    audio: LIST_1.flatMap(item => [item.first, item.second]),
-    images: LIST_1.map(item => item.img)
+    audio: getAudioStimuli(),
+    images: getImgStimuli()
 };
 
 
@@ -94,9 +75,12 @@ let end_screen = {
     choices: [],
     trial_duration: DEBRIEF_MESSAGE_DURATION,
     on_start : function(data) {
-        jsPsych.data.get().localSave('csv', 'E1S2_PP' + jsPsych.data.dataProperties.ppid.padStart(4, 0) + '.csv');
+        jsPsych.data.get().localSave(
+            'csv',
+            'E1S2_PP' + jsPsych.data.dataProperties.ppid.padStart(4, 0) + '.csv'
+        );
     },
-    first_sound: 'stimuli/wav/Goodbye.wav',
+    first_sound: GOODBYE_WAV,
     record: false
 };
 
@@ -105,7 +89,7 @@ let trial_procedure = {
     type: SoundBoardTrial,
     stimulus: () => {
         let words = uil.randomization.randomShuffle(jsPsych.timelineVariable('words'))
-            .map(word => `<div class="word">${word}</div>`).join('');
+            .map(img => `<div class="word"><img src="./stimuli/img/${img}"/></div>`).join('');
 
         let img = jsPsych.timelineVariable('img');
         return `<div><img src="${img}"></div><div>${words}</div>`;
