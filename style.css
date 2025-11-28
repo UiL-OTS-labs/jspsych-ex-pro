@@ -11,3 +11,9 @@
     height: 200px
 }
 
+img.thumbnail {
+    width: 100px;
+    height: auto;
+    padding: 25px;
+}
+
