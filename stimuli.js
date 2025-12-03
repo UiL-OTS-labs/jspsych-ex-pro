@@ -62,6 +62,7 @@ function prepare_stimuli() {
     if (prepare_stimuli.done === undefined) {
         PRACTICE_LIST = prac_items
         LIST_1 = test_items
+        LIST_1 = prepare_test_trials(LIST_1);
         _prepare_images();
         _prepare_wavs();
         prepare_stimuli.done = true;
@@ -78,7 +79,18 @@ function prepare_stimuli() {
  */
 function prepare_test_trials(trials) {
 
-    return reordered_trials
+    trials = uil.randomization.randomShuffle(trials);
+    let reordered_trials = [];
+
+    let production = trials.filter((item) => item.type === "production");
+    let exposure = trials.filter((item) => item.type === "exposure");
+
+    for (i = 0; i < Math.min(production.length, exposure.length); i++) {
+        reordered_trials.push(exposure[i]);
+        reordered_trials.push(production[i]);
+    }
+
+    return reordered_trials;
 }
 
 
