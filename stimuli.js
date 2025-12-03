@@ -165,7 +165,7 @@ function getImgStimuli() {
         return array;
     })
     
-    console.log(`img stims = ${ret}`);
+    // console.log(`img stims = ${ret}`);
 
     return ret;
 }
@@ -193,7 +193,7 @@ function getAudioStimuli() {
     ret.push(GREETING_WAV);
     ret = ret.concat(REMINDER_AUDIO);
 
-    console.log(`Audio stims = ${ret}`);
+    // console.log(`Audio stims = ${ret}`);
 
     return ret
 }
