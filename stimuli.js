@@ -44,10 +44,10 @@ function _prepare_wavs() {
             return `${FOLDER_WAV}${wav}`;
         }
 
-        if (row.first !== undefined)
-            row.first = sanitize_wav(row.first);
-        if (row.second !== undefined)
-            row.second = sanitize_wav(row.second);
+        if (row.space_resp!== undefined)
+            row.space_resp = sanitize_wav(row.space_resp);
+        if (row.r_resp !== undefined)
+            row.r_resp = sanitize_wav(row.r_resp);
         if (row.file !== undefined)
             row.file = sanitize_wav(row.file);
         array[index] = row;
@@ -66,6 +66,19 @@ function prepare_stimuli() {
         _prepare_wavs();
         prepare_stimuli.done = true;
     }
+}
+
+/**
+ * Prepares the trials for the test phase.
+ *
+ * The stimuli are shuffled, then it is made sure that the exposure/production
+ * trials are interleaved.
+ *
+ * @param {Array.<Object>} trials
+ */
+function prepare_test_trials(trials) {
+
+    return reordered_trials
 }
 
 
@@ -157,7 +170,6 @@ function getImgStimuli() {
             (thumb) => {
                 // When we have thumbnails extract them
                 if (thumb !== "") {
-                    console.log(thumb);
                     array.push(thumb);
                 }
             }
@@ -180,10 +192,10 @@ function getAudioStimuli() {
     let ret = PRACTICE_LIST.concat(LIST_1).concat(DELAYED_AUDIO).concat(HESITANT_AUDIO)
         .flatMap((item) => {
             let temp = [];
-            if (item.first)
-                temp.push(item.first);
-            if (item.second)
-                temp.push(item.second);
+            if (item.space_resp)
+                temp.push(item.space_resp);
+            if (item.r_resp)
+                temp.push(item.r_resp);
             if (item.file)
                 temp.push(item.file);
             return temp;

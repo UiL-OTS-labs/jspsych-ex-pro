@@ -37,11 +37,11 @@ class SoundBoardTrial {
                 type: jsPsychModule.ParameterType.HTML_STRING,
                 default: undefined
             },
-            first_sound: {
+            space_sound: {
                 type: jsPsychModule.ParameterType.STRING,
                 default: undefined
             },
-            second_sound: {
+            r_sound: {
                 type: jsPsychModule.ParameterType.STRING,
                 default: null
             },
@@ -102,10 +102,10 @@ class SoundBoardTrial {
                 highlightWord(3);
                 break;
             case ' ':
-                if (trial.first_sound) this.playSound(trial.first_sound, indicator);
+                if (trial.space_sound) this.playSound(trial.space_sound, indicator);
                 break;
             case 'r':
-                if (trial.second_sound) this.playSound(trial.second_sound, indicator);
+                if (trial.r_sound) this.playSound(trial.r_sound, indicator);
                 break;
             case 'g':
                 if (trial.delayed_sound) {

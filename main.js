@@ -108,8 +108,8 @@ let trial_procedure = {
         let img = jsPsych.timelineVariable('img');
         return `<div><img src="${img}" class="top_pic"></div><div>${table}</div>`;
     },
-    first_sound: () => jsPsych.timelineVariable('first'),
-    second_sound: () => jsPsych.timelineVariable('second'),
+    space_sound: () => jsPsych.timelineVariable('space_resp'),
+    r_sound: () => jsPsych.timelineVariable('r_resp'),
     delayed_sound: () => uil.randomization.randomShuffle(DELAYED_AUDIO).find(x => !x.played),
     hesitant_sound: () => uil.randomization.randomShuffle(HESITANT_AUDIO).find(x => !x.played),
     end_delay: 100,
