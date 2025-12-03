@@ -106,7 +106,7 @@ let trial_procedure = {
         let table = `<table style="width:100%;"><tr>${words}</tr></table>`
 
         let img = jsPsych.timelineVariable('img');
-        return `<div><img src="${img}"></div><div>${table}</div>`;
+        return `<div><img src="${img}" class="top_pic"></div><div>${table}</div>`;
     },
     first_sound: () => jsPsych.timelineVariable('first'),
     second_sound: () => jsPsych.timelineVariable('second'),
