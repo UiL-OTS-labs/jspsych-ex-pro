@@ -1,125 +1,199 @@
 
-//
 //////////////
 // STIMULI
 ///////////////
 
 const LISTS = ["list1"];
 
+const FOLDER_WAV = "stimuli/wav/";
+const FOLDER_IMG = "stimuli/img/";
+const GOODBYE_WAV = 'stimuli/wav/Goodbye.wav';
+const GREETING_WAV = 'stimuli/wav/greeting.wav';
 
-const PRACTICE_LIST = [
-    {id: "Practice1", img: "stimuli/img/practice 1.png", first: "stimuli/wav/Practice1_1st.wav", second: "stimuli/wav/Practice1_2nd.wav",
-     words: ["food", "hop", "stuff", "xien"]},
-    {id: "Practice2", img: "stimuli/img/practice 2.png", first: "stimuli/wav/Practice2_1st.wav", second: "stimuli/wav/Practice2_2nd.wav",
-     words: ["brug", "path", "food", "beave"]},
-    {id: "Practice3", img: "stimuli/img/practice 3.png", first: "stimuli/wav/Practice3_1st.wav", second: "stimuli/wav/Practice3_2nd.wav",
-     words: ["pirth", "seak", "tap", "trusk"]}
+function _prepare_images() {
+    function prepare_image(row, index, array) {
+        function sanitize_image(img_name) {
+            let img = img_name
+            if (img.split(".").pop() !== "png") {
+                img += ".png";
+            }
+            return `${FOLDER_IMG}${img}`
+        }
+        row.img = sanitize_image(row.img)
+        row.thumbnails.forEach((value, index, array) => {
+            if (value === null || value === undefined || value === "")
+                return;
+            array[index] = sanitize_image(value);
+        });
+        array[index] = row;
+    }
+
+    PRACTICE_LIST.forEach(prepare_image);
+    LIST_1.forEach(prepare_image);
+}
+
+function _prepare_wavs() {
+
+    function prepare_wav(row, index, array) {
+
+        function sanitize_wav(wav_name) {
+            let wav = wav_name;
+            if (wav.split(".").pop() !== "wav") {
+                wav += ".wav"
+            }
+            return `${FOLDER_WAV}${wav}`;
+        }
+
+        if (row.first !== undefined)
+            row.first = sanitize_wav(row.first);
+        if (row.second !== undefined)
+            row.second = sanitize_wav(row.second);
+        if (row.file !== undefined)
+            row.file = sanitize_wav(row.file);
+        array[index] = row;
+    }
+
+    PRACTICE_LIST.forEach(prepare_wav);
+    LIST_1.forEach(prepare_wav);
+}
+
+function prepare_stimuli() {
+    // only do this once.
+    if (prepare_stimuli.done === undefined) {
+        PRACTICE_LIST = prac_items
+        LIST_1 = test_items
+        _prepare_images();
+        _prepare_wavs();
+        prepare_stimuli.done = true;
+    }
+}
+
+
+PRACTICE_LIST = [
 ];
 
-const LIST_1 = [
-    {id: "Trial1_pat", img: "stimuli/img/1.png", first: "stimuli/wav/Trial1_pat_1st.wav", second: "stimuli/wav/Trial1_pat_2nd.wav",
-     words: ["pat", "wipe", "feak", "beit"]},
-    {id: "Trial2_pad", img: "stimuli/img/2.png", first: "stimuli/wav/Trial2_pad_1st.wav", second: "stimuli/wav/Trial2_pad_2nd.wav",
-     words: ["pad", "sun", "hag", "fik"]},
-    {id: "Trial3_pak", img: "stimuli/img/3.png", first: "stimuli/wav/Trial3_pak_1st.wav", second: "stimuli/wav/Trial3_pak_2nd.wav",
-     words: ["pak", "thirst", "hat", "nud"]},
-    {id: "Trial4_pag", img: "stimuli/img/4.png", first: "stimuli/wav/Trial4_pag_1st.wav", second: "stimuli/wav/Trial4_pag_2nd.wav",
-     words: ["pag", "jot", "book", "feag"]},
-    {id: "Trial5_sat", img: "stimuli/img/5.png", first: "stimuli/wav/Trial5_sat_1st.wav", second: "stimuli/wav/Trial5_sat_2nd.wav",
-     words: ["sat", "red", "fit", "tove"]},
-    {id: "Trial6_sad", img: "stimuli/img/6.png", first: "stimuli/wav/Trial6_sad_1st.wav", second: "stimuli/wav/Trial6_sad_2nd.wav",
-     words: ["sad", "peat", "zaut", "bed"]},
-    {id: "Trial7_sak", img: "stimuli/img/7.png", first: "stimuli/wav/Trial7_sak_1st.wav", second: "stimuli/wav/Trial7_sak_2nd.wav",
-     words: ["sak", "heart", "fead", "jouse"]},
-    {id: "Trial8_sag", img: "stimuli/img/8.png", first: "stimuli/wav/Trial8_sag_1st.wav", second: "stimuli/wav/Trial8_sag_2nd.wav",
-     words: ["sag", "fid", "vase", "pik"]},
-    {id: "Trial9_fat", img: "stimuli/img/9.png", first: "stimuli/wav/Trial9_fat_1st.wav", second: "stimuli/wav/Trial9_fat_2nd.wav",
-     words: ["fat", "tief", "brug", "road"]},
-    {id: "Trial10_fad", img: "stimuli/img/10.png", first: "stimuli/wav/Trial10_fad_1st.wav", second: "stimuli/wav/Trial10_fad_2nd.wav",
-     words: ["fad", "kev", "pig", "dute"]},
-    {id: "Trial11_fak", img: "stimuli/img/11.png", first: "stimuli/wav/Trial11_fak_1st.wav", second: "stimuli/wav/Trial11_fak_2nd.wav",
-     words: ["fak", "cat", "seag", "hug"]},
-    {id: "Trial12_fag", img: "stimuli/img/12.png", first: "stimuli/wav/Trial12_fag_1st.wav", second: "stimuli/wav/Trial12_fag_2nd.wav",
-     words: ["fag", "sik", "hand", "biut"]},
-    {id: "Trial13_pit", img: "stimuli/img/13.png", first: "stimuli/wav/Trial13_pit_1st.wav", second: "stimuli/wav/Trial13_pit_2nd.wav",
-     words: ["pit", "sead", "rud", "milk"]},
-    {id: "Trial14_pid", img: "stimuli/img/14.png", first: "stimuli/wav/Trial14_pid_1st.wav", second: "stimuli/wav/Trial14_pid_2nd.wav",
-     words: ["pid", "fouk", "head", "tuck"]},
-    {id: "Trial15_pik", img: "stimuli/img/15.png", first: "stimuli/wav/Trial15_pik_1st.wav", second: "stimuli/wav/Trial15_pik_2nd.wav",
-     words: ["pik", "doon", "fish", "jast"]},
-    {id: "Trial16_pig", img: "stimuli/img/16.png", first: "stimuli/wav/Trial16_pig_1st.wav", second: "stimuli/wav/Trial16_pig_2nd.wav",
-     words: ["pig", "viok", "houp", "sat"]},
-    {id: "Trial17_sit", img: "stimuli/img/17.png", first: "stimuli/wav/Trial17_sit_1st.wav", second: "stimuli/wav/Trial17_sit_2nd.wav",
-     words: ["sit", "twek", "hate", "fag"]},
-    {id: "Trial18_sid", img: "stimuli/img/18.png", first: "stimuli/wav/Trial18_sid_1st.wav", second: "stimuli/wav/Trial18_sid_2nd.wav",
-     words: ["sid", "cute", "jisak", "peag"]},
-    {id: "Trial19_sik", img: "stimuli/img/19.png", first: "stimuli/wav/Trial19_sik_1st.wav", second: "stimuli/wav/Trial19_sik_2nd.wav",
-     words: ["sik", "feet", "sag", "pout"]},
-    {id: "Trial20_sig", img: "stimuli/img/20.png", first: "stimuli/wav/Trial20_sig_1st.wav", second: "stimuli/wav/Trial20_sig_2nd.wav",
-     words: ["sig", "pid", "nise", "kiest"]},
-    {id: "Trial21_fit", img: "stimuli/img/21.png", first: "stimuli/wav/Trial21_fit_1st.wav", second: "stimuli/wav/Trial21_fit_2nd.wav",
-     words: ["fit", "pack", "bast", "woik"]},
-    {id: "Trial22_fid", img: "stimuli/img/22.png", first: "stimuli/wav/Trial22_fid_1st.wav", second: "stimuli/wav/Trial22_fid_2nd.wav",
-     words: ["fid", "wait", "cask", "boat"]},
-    {id: "Trial23_fik", img: "stimuli/img/23.png", first: "stimuli/wav/Trial23_fik_1st.wav", second: "stimuli/wav/Trial23_fik_2nd.wav",
-     words: ["fik", "queste", "frust", "cup"]},
-    {id: "Trial24_fig", img: "stimuli/img/24.png", first: "stimuli/wav/Trial24_fig_1st.wav", second: "stimuli/wav/Trial24_fig_2nd.wav",
-     words: ["fig", "dream", "sack", "sery"]},
-    {id: "Trial25_peat", img: "stimuli/img/25.png", first: "stimuli/wav/Trial25_peat_1st.wav", second: "stimuli/wav/Trial25_peat_2nd.wav",
-     words: ["peat", "dog", "raist", "fack"]},
-    {id: "Trial26_pead", img: "stimuli/img/26.png", first: "stimuli/wav/Trial26_pead_1st.wav", second: "stimuli/wav/Trial26_pead_2nd.wav",
-     words: ["pead", "juice", "hide", "taik"]},
-    {id: "Trial27_peak", img: "stimuli/img/27.png", first: "stimuli/wav/Trial27_peak_1st.wav", second: "stimuli/wav/Trial27_peak_2nd.wav",
-     words: ["peak", "meas", "pat", "laut"]},
-    {id: "Trial28_peag", img: "stimuli/img/28.png", first: "stimuli/wav/Trial28_peag_1st.wav", second: "stimuli/wav/Trial28_peag_2nd.wav",
-     words: ["peag", "bird", "throve", "gek"]},
-    {id: "Trial29_seat", img: "stimuli/img/29.png", first: "stimuli/wav/Trial29_seat_1st.wav", second: "stimuli/wav/Trial29_seat_2nd.wav",
-     words: ["seat", "jouk", "beach", "pik"]},
-    {id: "Trial30_sead", img: "stimuli/img/30.png", first: "stimuli/wav/Trial30_sead_1st.wav", second: "stimuli/wav/Trial30_sead_2nd.wav",
-     words: ["sead", "pirth", "hit", "food"]},
-    {id: "Trial31_seak", img: "stimuli/img/31.png", first: "stimuli/wav/Trial31_seak_1st.wav", second: "stimuli/wav/Trial31_seak_2nd.wav",
-     words: ["seak", "kast", "kid", "pag"]},
-    {id: "Trial32_seag", img: "stimuli/img/32.png", first: "stimuli/wav/Trial32_seag_1st.wav", second: "stimuli/wav/Trial32_seag_2nd.wav",
-     words: ["seag", "fad", "bus", "geote"]},
-    {id: "Trial33_feat", img: "stimuli/img/33.png", first: "stimuli/wav/Trial33_feat_1st.wav", second: "stimuli/wav/Trial33_feat_2nd.wav",
-     words: ["feat", "mouth", "sid", "nied"]},
-    {id: "Trial34_fead", img: "stimuli/img/34.png", first: "stimuli/wav/Trial34_fead_1st.wav", second: "stimuli/wav/Trial34_fead_2nd.wav",
-     words: ["fead", "pad", "sit", "ceste"]},
-    {id: "Trial35_feak", img: "stimuli/img/35.png", first: "stimuli/wav/Trial35_feak_1st.wav", second: "stimuli/wav/Trial35_feak_2nd.wav",
-     words: ["feak", "stuff", "drive", "paask"]},
-    {id: "Trial36_feag", img: "stimuli/img/36.png", first: "stimuli/wav/Trial36_feag_1st.wav", second: "stimuli/wav/Trial36_feag_2nd.wav",
-     words: ["feag", "sad", "hoogs", "kopt"]},
-    {id: "Trial37_wealth", img: "stimuli/img/37.png", first: "stimuli/wav/Trial37_wealth_1st.wav", second: "stimuli/wav/Trial37_wealth_2nd.wav",
-     words: ["wealth", "map", "sig", "loste"]},
-    {id: "Trial38_thirst", img: "stimuli/img/38.png", first: "stimuli/wav/Trial38_thirst_1st.wav", second: "stimuli/wav/Trial38_thirst_2nd.wav",
-     words: ["thirst", "drink", "peak", "net"]},
-    {id: "Trial39_throve", img: "stimuli/img/39.png", first: "stimuli/wav/Trial39_throve_1st.wav", second: "stimuli/wav/Trial39_throve_2nd.wav",
-     words: ["throve", "fat", "help", "thist"]},
-    {id: "Trial40_houp", img: "stimuli/img/40.png", first: "stimuli/wav/Trial40_houp_1st.wav", second: "stimuli/wav/Trial40_houp_2nd.wav",
-     words: ["houp", "dig", "feat", "bute"]},
-    {id: "Trial41_doon", img: "stimuli/img/41.png", first: "stimuli/wav/Trial41_doon_1st.wav", second: "stimuli/wav/Trial41_doon_2nd.wav",
-     words: ["doon", "sleep", "pit", "lasy"]},
-    {id: "Trial42_juice", img: "stimuli/img/42.png", first: "stimuli/wav/Trial42_juice_1st.wav", second: "stimuli/wav/Trial42_juice_2nd.wav",
-     words: ["juice", "fig", "top", "cisk"]},
-    {id: "Trial43_tuck", img: "stimuli/img/43.png", first: "stimuli/wav/Trial43_tuck_1st.wav", second: "stimuli/wav/Trial43_tuck_2nd.wav",
-     words: ["tuck", "box", "wealth", "mait"]},
-    {id: "Trial44_frust", img: "stimuli/img/44.png", first: "stimuli/wav/Trial44_frust_1st.wav", second: "stimuli/wav/Trial44_frust_2nd.wav",
-     words: ["frust", "mix", "seat", "hius"]},
-    {id: "Trial45_stuff", img: "stimuli/img/45.png", first: "stimuli/wav/Trial45_stuff_1st.wav", second: "stimuli/wav/Trial45_stuff_2nd.wav",
-     words: ["stuff", "pead", "jam", "leask"]}
+LIST_1 = [
 ];
 
 
 const DELAYED_AUDIO = [
-    {file: 'stimuli/wav/delayed_01.wav'},
-    {file: 'stimuli/wav/delayed_02.wav'},
-    {file: 'stimuli/wav/delayed_03.wav'},
+    {file: 'stimuli/wav/delay_1.wav'},
+    {file: 'stimuli/wav/delay_2.wav'},
+    {file: 'stimuli/wav/delay_3.wav'},
+    {file: 'stimuli/wav/delay_4.wav'},
+    {file: 'stimuli/wav/delay_5.wav'},
+    {file: 'stimuli/wav/delay_6.wav'},
 ];
 
 const HESITANT_AUDIO = [
-    {file: 'stimuli/wav/hesitant_01.wav'},
-    {file: 'stimuli/wav/hesitant_02.wav'},
-    {file: 'stimuli/wav/hesitant_03.wav'},
-    {file: 'stimuli/wav/hesitant_04.wav'},
-    {file: 'stimuli/wav/hesitant_05.wav'},
+    {file: 'stimuli/wav/hesitant_1.wav'},
+    {file: 'stimuli/wav/hesitant_2.wav'},
+    {file: 'stimuli/wav/hesitant_3.wav'},
+    {file: 'stimuli/wav/hesitant_4.wav'},
+    {file: 'stimuli/wav/hesitant_5.wav'},
 ];
+
+const REMINDER_AUDIO= [
+    "stimuli/wav/reminder_1.wav",
+    "stimuli/wav/reminder_2.wav",
+    "stimuli/wav/reminder_3.wav",
+    "stimuli/wav/reminder_4.wav",
+    "stimuli/wav/reminder_5.wav",
+    "stimuli/wav/reminder_6.wav",
+    "stimuli/wav/reminder_7.wav",
+    "stimuli/wav/reminder_8.wav",
+    "stimuli/wav/reminder_9.wav",
+    "stimuli/wav/reminder_10.wav",
+    "stimuli/wav/reminder_11.wav",
+    "stimuli/wav/reminder_12.wav",
+];
+
+function _extractObjectItems(items, keys) {
+    let array = [];
+    items.forEach(
+        item => {
+            keys.forEach(
+                key => {
+                    let value = item[key];
+                    if (Array.isArray(value)) {
+                        value.forEach(
+                            array_item => {
+                                if (array_item === undefined || array_item === null) { // array_items can be empty
+                                    return;
+                                }
+                                if (typeof array_item !== "string")
+                                    throw new Error(
+                                        "Expected string or array of strings"
+                                    );
+                                array.push(array_item);
+                            }
+                        );
+                    }
+                    else if (typeof value === "string") {
+                        array.push(value);
+                    }
+                    else {
+                        throw new Error(
+                            "Unexpected type, expected an array of string or array"
+                        );
+                    }
+                }
+            );
+        }
+    );
+    return array
+}
+
+/**
+ * Returns a list containing all the audio stimuli
+ *
+ * Returns {Array<string>} : An array with the sound files
+ */
+function getImgStimuli() {
+    prepare_stimuli();
+    let ret = PRACTICE_LIST.concat(LIST_1).flatMap( (item) => {
+        let array = [item.img];
+        item.thumbnails.forEach(
+            (thumb) => {
+                // When we have thumbnails extract them
+                if (thumb !== "") {
+                    console.log(thumb);
+                    array.push(thumb);
+                }
+            }
+        );
+        return array;
+    })
+    
+    // console.log(`img stims = ${ret}`);
+
+    return ret;
+}
+
+/**
+ * Returns a list containing all the audio stimuli
+ *
+ * Returns {Array<string>} : An array with the sound files
+ */
+function getAudioStimuli() {
+    prepare_stimuli();
+    let ret = PRACTICE_LIST.concat(LIST_1).concat(DELAYED_AUDIO).concat(HESITANT_AUDIO)
+        .flatMap((item) => {
+            let temp = [];
+            if (item.first)
+                temp.push(item.first);
+            if (item.second)
+                temp.push(item.second);
+            if (item.file)
+                temp.push(item.file);
+            return temp;
+        });
+
+    // ret.push(GOODBYE_WAV);
+    ret.push(GREETING_WAV);
+    ret = ret.concat(REMINDER_AUDIO);
+
+    // console.log(`Audio stims = ${ret}`);
+
+    return ret
+}
