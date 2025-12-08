@@ -120,6 +120,7 @@ let trial_procedure = {
     r_sound: () => jsPsych.timelineVariable('r_resp'),
     delayed_sound: () => uil.randomization.randomShuffle(DELAYED_AUDIO).find(x => !x.played),
     hesitant_sound: () => uil.randomization.randomShuffle(HESITANT_AUDIO).find(x => !x.played),
+    reminder_sound: () => uil.randomization.randomShuffle(REMINDER_AUDIO).find(x => !x.played),
     end_delay: 100,
     on_finish: function(data) {
         data.id = jsPsych.timelineVariable('id');

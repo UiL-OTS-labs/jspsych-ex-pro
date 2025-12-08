@@ -1,4 +1,4 @@
-const BUTTONS = ['1', '2', '3', '4', 'ArrowRight', ' ', 'r', 'g', 'p'];
+const BUTTONS = ['1', '2', '3', '4', 'ArrowRight', ' ', 'r', 'g', 'p', 'l'];
 
 let recorder;
 
@@ -50,6 +50,10 @@ class SoundBoardTrial {
                 default: null
             },
             hesitant_sound: {
+                type: jsPsychModule.ParameterType.OBJECT,
+                default: null
+            },
+            reminder_sound: {
                 type: jsPsychModule.ParameterType.OBJECT,
                 default: null
             },
@@ -117,6 +121,12 @@ class SoundBoardTrial {
                 if (trial.hesitant_sound) {
                     this.playSound(trial.hesitant_sound.file, indicator);
                     trial.hesitant_sound.played = true;
+                }
+                break;
+            case 'l':
+                if (trial.reminder_sound) {
+                    this.playSound(trial.hesitant_sound.file, indicator);
+                    trial.reminder_sound.played = true;
                 }
                 break;
             case 'arrowright':

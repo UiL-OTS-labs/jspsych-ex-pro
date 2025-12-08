@@ -119,18 +119,18 @@ const HESITANT_AUDIO = [
 ];
 
 const REMINDER_AUDIO= [
-    "stimuli/wav/reminder_1.wav",
-    "stimuli/wav/reminder_2.wav",
-    "stimuli/wav/reminder_3.wav",
-    "stimuli/wav/reminder_4.wav",
-    "stimuli/wav/reminder_5.wav",
-    "stimuli/wav/reminder_6.wav",
-    "stimuli/wav/reminder_7.wav",
-    "stimuli/wav/reminder_8.wav",
-    "stimuli/wav/reminder_9.wav",
-    "stimuli/wav/reminder_10.wav",
-    "stimuli/wav/reminder_11.wav",
-    "stimuli/wav/reminder_12.wav",
+    {file: "stimuli/wav/reminder_1.wav"},
+    {file: "stimuli/wav/reminder_2.wav"},
+    {file: "stimuli/wav/reminder_3.wav"},
+    {file: "stimuli/wav/reminder_4.wav"},
+    {file: "stimuli/wav/reminder_5.wav"},
+    {file: "stimuli/wav/reminder_6.wav"},
+    {file: "stimuli/wav/reminder_7.wav"},
+    {file: "stimuli/wav/reminder_8.wav"},
+    {file: "stimuli/wav/reminder_9.wav"},
+    {file: "stimuli/wav/reminder_10.wav"},
+    {file: "stimuli/wav/reminder_11.wav"},
+    {file: "stimuli/wav/reminder_12.wav"},
 ];
 
 function _extractObjectItems(items, keys) {
@@ -201,7 +201,10 @@ function getImgStimuli() {
  */
 function getAudioStimuli() {
     prepare_stimuli();
-    let ret = PRACTICE_LIST.concat(LIST_1).concat(DELAYED_AUDIO).concat(HESITANT_AUDIO)
+    let ret = PRACTICE_LIST.concat(LIST_1)
+        .concat(DELAYED_AUDIO)
+        .concat(HESITANT_AUDIO)
+        .concat(REMINDER_AUDIO) 
         .flatMap((item) => {
             let temp = [];
             if (item.space_resp)
@@ -215,9 +218,6 @@ function getAudioStimuli() {
 
     // ret.push(GOODBYE_WAV);
     ret.push(GREETING_WAV);
-    ret = ret.concat(REMINDER_AUDIO);
-
-    // console.log(`Audio stims = ${ret}`);
 
     return ret
 }
