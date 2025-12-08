@@ -1,4 +1,4 @@
-const BUTTONS = ['1', '2', '3', '4', 'ArrowRight', ' ', 'r', 'g', 'p'];
+const BUTTONS = ['1', '2', '3', '4', 'ArrowRight', ' ', 'r', 'g', 'p', 'l'];
 
 let recorder;
 
@@ -37,11 +37,11 @@ class SoundBoardTrial {
                 type: jsPsychModule.ParameterType.HTML_STRING,
                 default: undefined
             },
-            first_sound: {
+            space_sound: {
                 type: jsPsychModule.ParameterType.STRING,
                 default: undefined
             },
-            second_sound: {
+            r_sound: {
                 type: jsPsychModule.ParameterType.STRING,
                 default: null
             },
@@ -50,6 +50,10 @@ class SoundBoardTrial {
                 default: null
             },
             hesitant_sound: {
+                type: jsPsychModule.ParameterType.OBJECT,
+                default: null
+            },
+            reminder_sound: {
                 type: jsPsychModule.ParameterType.OBJECT,
                 default: null
             },
@@ -102,10 +106,10 @@ class SoundBoardTrial {
                 highlightWord(3);
                 break;
             case ' ':
-                if (trial.first_sound) this.playSound(trial.first_sound, indicator);
+                if (trial.space_sound) this.playSound(trial.space_sound, indicator);
                 break;
             case 'r':
-                if (trial.second_sound) this.playSound(trial.second_sound, indicator);
+                if (trial.r_sound) this.playSound(trial.r_sound, indicator);
                 break;
             case 'g':
                 if (trial.delayed_sound) {
@@ -117,6 +121,12 @@ class SoundBoardTrial {
                 if (trial.hesitant_sound) {
                     this.playSound(trial.hesitant_sound.file, indicator);
                     trial.hesitant_sound.played = true;
+                }
+                break;
+            case 'l':
+                if (trial.reminder_sound) {
+                    this.playSound(trial.hesitant_sound.file, indicator);
+                    trial.reminder_sound.played = true;
                 }
                 break;
             case 'arrowright':

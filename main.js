@@ -62,8 +62,8 @@ let instructions = {
 let preload_media = {
     type: jsPsychPreload,
     message: PRELOAD_MSG,
-    audio: getAudioStimuli(),
-    images: getImgStimuli()
+    audio: null, // set in initExperiment
+    images: null,  // set in initExperiment
 };
 
 
@@ -88,30 +88,39 @@ let end_screen = {
 let trial_procedure = {
     type: SoundBoardTrial,
     stimulus: () => {
-        let words = uil.randomization.randomShuffle(jsPsych.timelineVariable('thumbnails'));
-        if (typeof words[0] === "string") {
-            let temp = words.map(
+        let thumbs = uil.randomization.randomShuffle(
+            jsPsych.timelineVariable('thumbnails')
+        );
+        let table = null; 
+        if (typeof thumbs[0] === "string") {
+            let temp = thumbs.map(
                 img => {
                     return `<td><div class="word">
                                 <img class="thumbnail" src="${img}"/>
                             </div></td>`;
                 }
             ).join('');
-            words = temp;
+            thumbs = temp;
         }
         else {
-            words = ""
+            thumbs = ""
         }
-        
-        let table = `<table style="width:100%;"><tr>${words}</tr></table>`
+
+        if (thumbs) {
+            table = `<table style="width:100%;"><tr>${thumbs}</tr></table>`
+        }
 
         let img = jsPsych.timelineVariable('img');
-        return `<div><img src="${img}" class="top_pic"></div><div>${table}</div>`;
+        if (table)
+            return `<div><img src="${img}" class="top_pic"></div><div>${table}</div>`;
+        else
+            return `<div><img src="${img}" class="top_pic"></div>`
     },
-    first_sound: () => jsPsych.timelineVariable('first'),
-    second_sound: () => jsPsych.timelineVariable('second'),
+    space_sound: () => jsPsych.timelineVariable('space_resp'),
+    r_sound: () => jsPsych.timelineVariable('r_resp'),
     delayed_sound: () => uil.randomization.randomShuffle(DELAYED_AUDIO).find(x => !x.played),
     hesitant_sound: () => uil.randomization.randomShuffle(HESITANT_AUDIO).find(x => !x.played),
+    reminder_sound: () => uil.randomization.randomShuffle(REMINDER_AUDIO).find(x => !x.played),
     end_delay: 100,
     on_finish: function(data) {
         data.id = jsPsych.timelineVariable('id');
@@ -140,10 +149,13 @@ let initialize_microphone = {
 };
 
 
-function initExperiment(stimuli) {
+function initExperiment() {
     //////////////// timeline /////////////////////////////////
 
     let timeline = [];
+
+    preload_media.audio = getAudioStimuli();
+    preload_media.images = getImgStimuli();
 
     timeline.push(start_screen);
     timeline.push(preload_media);
@@ -159,7 +171,7 @@ function initExperiment(stimuli) {
 
     timeline.push({
         timeline: [trial_procedure],
-        timeline_variables: stimuli
+        timeline_variables: LIST_1
     });
 
     timeline.push(end_screen);
@@ -178,6 +190,6 @@ function main() {
     jsPsych.data.addProperties ({
         ppid: prompt('Please enter participant id: '),
     });
-    let stimuli = uil.randomization.randomShuffle(LIST_1);
-    initExperiment(stimuli);
+
+    initExperiment();
 }

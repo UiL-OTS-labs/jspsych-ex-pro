@@ -44,10 +44,10 @@ function _prepare_wavs() {
             return `${FOLDER_WAV}${wav}`;
         }
 
-        if (row.first !== undefined)
-            row.first = sanitize_wav(row.first);
-        if (row.second !== undefined)
-            row.second = sanitize_wav(row.second);
+        if (row.space_resp!== undefined)
+            row.space_resp = sanitize_wav(row.space_resp);
+        if (row.r_resp !== undefined)
+            row.r_resp = sanitize_wav(row.r_resp);
         if (row.file !== undefined)
             row.file = sanitize_wav(row.file);
         array[index] = row;
@@ -62,10 +62,35 @@ function prepare_stimuli() {
     if (prepare_stimuli.done === undefined) {
         PRACTICE_LIST = prac_items
         LIST_1 = test_items
+        LIST_1 = prepare_test_trials(LIST_1);
         _prepare_images();
         _prepare_wavs();
         prepare_stimuli.done = true;
     }
+}
+
+/**
+ * Prepares the trials for the test phase.
+ *
+ * The stimuli are shuffled, then it is made sure that the exposure/production
+ * trials are interleaved.
+ *
+ * @param {Array.<Object>} trials
+ */
+function prepare_test_trials(trials) {
+
+    trials = uil.randomization.randomShuffle(trials);
+    let reordered_trials = [];
+
+    let production = trials.filter((item) => item.type === "production");
+    let exposure = trials.filter((item) => item.type === "exposure");
+
+    for (i = 0; i < Math.min(production.length, exposure.length); i++) {
+        reordered_trials.push(exposure[i]);
+        reordered_trials.push(production[i]);
+    }
+
+    return reordered_trials;
 }
 
 
@@ -94,18 +119,18 @@ const HESITANT_AUDIO = [
 ];
 
 const REMINDER_AUDIO= [
-    "stimuli/wav/reminder_1.wav",
-    "stimuli/wav/reminder_2.wav",
-    "stimuli/wav/reminder_3.wav",
-    "stimuli/wav/reminder_4.wav",
-    "stimuli/wav/reminder_5.wav",
-    "stimuli/wav/reminder_6.wav",
-    "stimuli/wav/reminder_7.wav",
-    "stimuli/wav/reminder_8.wav",
-    "stimuli/wav/reminder_9.wav",
-    "stimuli/wav/reminder_10.wav",
-    "stimuli/wav/reminder_11.wav",
-    "stimuli/wav/reminder_12.wav",
+    {file: "stimuli/wav/reminder_1.wav"},
+    {file: "stimuli/wav/reminder_2.wav"},
+    {file: "stimuli/wav/reminder_3.wav"},
+    {file: "stimuli/wav/reminder_4.wav"},
+    {file: "stimuli/wav/reminder_5.wav"},
+    {file: "stimuli/wav/reminder_6.wav"},
+    {file: "stimuli/wav/reminder_7.wav"},
+    {file: "stimuli/wav/reminder_8.wav"},
+    {file: "stimuli/wav/reminder_9.wav"},
+    {file: "stimuli/wav/reminder_10.wav"},
+    {file: "stimuli/wav/reminder_11.wav"},
+    {file: "stimuli/wav/reminder_12.wav"},
 ];
 
 function _extractObjectItems(items, keys) {
@@ -157,7 +182,6 @@ function getImgStimuli() {
             (thumb) => {
                 // When we have thumbnails extract them
                 if (thumb !== "") {
-                    console.log(thumb);
                     array.push(thumb);
                 }
             }
@@ -177,13 +201,16 @@ function getImgStimuli() {
  */
 function getAudioStimuli() {
     prepare_stimuli();
-    let ret = PRACTICE_LIST.concat(LIST_1).concat(DELAYED_AUDIO).concat(HESITANT_AUDIO)
+    let ret = PRACTICE_LIST.concat(LIST_1)
+        .concat(DELAYED_AUDIO)
+        .concat(HESITANT_AUDIO)
+        .concat(REMINDER_AUDIO) 
         .flatMap((item) => {
             let temp = [];
-            if (item.first)
-                temp.push(item.first);
-            if (item.second)
-                temp.push(item.second);
+            if (item.space_resp)
+                temp.push(item.space_resp);
+            if (item.r_resp)
+                temp.push(item.r_resp);
             if (item.file)
                 temp.push(item.file);
             return temp;
@@ -191,9 +218,6 @@ function getAudioStimuli() {
 
     // ret.push(GOODBYE_WAV);
     ret.push(GREETING_WAV);
-    ret = ret.concat(REMINDER_AUDIO);
-
-    // console.log(`Audio stims = ${ret}`);
 
     return ret
 }
