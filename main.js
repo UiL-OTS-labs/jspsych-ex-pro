@@ -87,6 +87,20 @@ let end_screen = {
     record: false
 };
 
+/**
+ * Pops a stimulus from the front and pushes it to the back
+ *
+ * The first item of the array will be returned and it will be
+ * put on the back again.
+ *
+ * @param stimuli Array<string> An array of stimuli.
+ * @Returns the first stimulus in the array
+ */
+function pop_and_requeue_stimulus(stimuli) {
+    let stimulus = stimuli.shift();
+    stimuli.push(stimulus)
+    return stimulus;
+}
 
 let trial_procedure = {
     type: SoundBoardTrial,
@@ -121,9 +135,9 @@ let trial_procedure = {
     },
     space_sound: () => jsPsych.timelineVariable('space_resp'),
     r_sound: () => jsPsych.timelineVariable('r_resp'),
-    delayed_sound: () => uil.randomization.randomShuffle(DELAYED_AUDIO).find(x => !x.played),
-    hesitant_sound: () => uil.randomization.randomShuffle(HESITANT_AUDIO).find(x => !x.played),
-    reminder_sound: () => uil.randomization.randomShuffle(REMINDER_AUDIO).find(x => !x.played),
+    delayed_sound: () => pop_and_requeue_stimulus(DELAYED_AUDIO),
+    hesitant_sound: () => pop_and_requeue_stimulus(HESITANT_AUDIO),
+    reminder_sound: () => pop_and_requeue_stimulus(REMINDER_AUDIO),
     end_delay: 100,
     on_finish: function(data) {
         data.id = jsPsych.timelineVariable('id');
