@@ -13,19 +13,6 @@ let prac_items = [
         r_resp: "practice_1_exp_2nd.wav"
     },
     {
-        type: "practice_exposure",
-        id: "practice_2_exp",
-        img: "practice_2_exp_0.png",
-        thumbnails: [
-            "practice_2_exp_1.png",
-            "practice_2_exp_2.png",
-            "practice_2_exp_3.png",
-            "practice_2_exp_4.png"
-        ],
-        space_resp: "practice_2_exp_1st.wav",
-        r_resp: "practice_2_exp_2nd.wav"
-    },
-    {
         type: "practice_production",
         id: "practice_1_pro",
         img: "practice_1_pro_0.png",
@@ -37,6 +24,19 @@ let prac_items = [
         ],
         space_resp: "practice_1_pro_1st.wav",
         r_resp: "practice_1_pro_2nd.wav"
+    },
+    {
+        type: "practice_exposure",
+        id: "practice_2_exp",
+        img: "practice_2_exp_0.png",
+        thumbnails: [
+            "practice_2_exp_1.png",
+            "practice_2_exp_2.png",
+            "practice_2_exp_3.png",
+            "practice_2_exp_4.png"
+        ],
+        space_resp: "practice_2_exp_1st.wav",
+        r_resp: "practice_2_exp_2nd.wav"
     },
     {
         type: "practice_production",
