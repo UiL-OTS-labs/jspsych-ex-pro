@@ -21,6 +21,11 @@ img.instruction1 {
     height: 300px;
 }
 
+img.instruction2 {
+    width: auto;
+    height: 150px;
+}
+
 img.thumbnail {
     width: auto;
     height: 150px;

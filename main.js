@@ -25,19 +25,6 @@ let start_screen = {
     }
 };
 
-let instruction_title = "Instructions";
-let instruction_text = `You and your partner will collaborate to play a 
-picture-matching game. One of you will see a picture with incomplete information 
-(such as pic 1, the missing information is always one of: the subject, the action,
-or the object), while the other will see the picture with the complete information
-(such as pic 2): A rabbit is burying a vegetable. The person with incomplete
-information needs to ask the partner for the missing information: e.g.,
-What is the rabbit doing with a vegetable?, and then find the matching picture
-from below and click on it. This person can ask the partner to repeat, but just
-once. Please always use complete sentences. Click the continue buttons to start the
-practice.
-`
-
 let instructions = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
@@ -54,6 +41,14 @@ let instructions = {
             <tr>
                 <td><image src="stimuli/img/Instruction_0.png" class="instruction1" alt="Oops picture not found"/></td>
                 <td><image src="stimuli/img/instruction_partner_0.png" class="instruction1" alt="Oops picture not found"/></td>
+            </tr>
+        </table>
+        <table style="margin:auto;">
+            <tr>
+                <td><image src="stimuli/img/instruction_1.png" class="instruction2" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/instruction_2.png" class="instruction2" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/instruction_3.png" class="instruction2" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/instruction_4.png" class="instruction2" alt="Oops picture not found"/></td>
             </tr>
         </table>
     </div>
