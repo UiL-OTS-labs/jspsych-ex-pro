@@ -52,8 +52,8 @@ let instructions = {
                 <td>pic 2</td>
             </tr>
             <tr>
-                <td><image src="stimuli/img/Instruction_0.png" alt="Oops picture not found"/></td>
-                <td><image src="stimuli/img/instruction_partner_0.png" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/Instruction_0.png" class="instruction1" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/instruction_partner_0.png" class="instruction1" alt="Oops picture not found"/></td>
             </tr>
         </table>
     </div>
@@ -109,7 +109,7 @@ let trial_procedure = {
             jsPsych.timelineVariable('thumbnails')
         );
         let table = null; 
-        if (typeof thumbs[0] === "string") {
+        if (typeof thumbs[0] === "string" && thumbs[0] !== "") {
             let temp = thumbs.map(
                 img => {
                     return `<td><div class="word">
