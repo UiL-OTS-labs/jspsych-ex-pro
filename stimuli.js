@@ -102,35 +102,35 @@ LIST_1 = [
 
 
 const DELAYED_AUDIO = [
-    {file: 'stimuli/wav/delay_1.wav'},
-    {file: 'stimuli/wav/delay_2.wav'},
-    {file: 'stimuli/wav/delay_3.wav'},
-    {file: 'stimuli/wav/delay_4.wav'},
-    {file: 'stimuli/wav/delay_5.wav'},
-    {file: 'stimuli/wav/delay_6.wav'},
+    'stimuli/wav/delay_1.wav',
+    'stimuli/wav/delay_2.wav',
+    'stimuli/wav/delay_3.wav',
+    'stimuli/wav/delay_4.wav',
+    'stimuli/wav/delay_5.wav',
+    'stimuli/wav/delay_6.wav',
 ];
 
 const HESITANT_AUDIO = [
-    {file: 'stimuli/wav/hesitant_1.wav'},
-    {file: 'stimuli/wav/hesitant_2.wav'},
-    {file: 'stimuli/wav/hesitant_3.wav'},
-    {file: 'stimuli/wav/hesitant_4.wav'},
-    {file: 'stimuli/wav/hesitant_5.wav'},
+    'stimuli/wav/hesitant_1.wav',
+    'stimuli/wav/hesitant_2.wav',
+    'stimuli/wav/hesitant_3.wav',
+    'stimuli/wav/hesitant_4.wav',
+    'stimuli/wav/hesitant_5.wav',
 ];
 
 const REMINDER_AUDIO= [
-    {file: "stimuli/wav/reminder_1.wav"},
-    {file: "stimuli/wav/reminder_2.wav"},
-    {file: "stimuli/wav/reminder_3.wav"},
-    {file: "stimuli/wav/reminder_4.wav"},
-    {file: "stimuli/wav/reminder_5.wav"},
-    {file: "stimuli/wav/reminder_6.wav"},
-    {file: "stimuli/wav/reminder_7.wav"},
-    {file: "stimuli/wav/reminder_8.wav"},
-    {file: "stimuli/wav/reminder_9.wav"},
-    {file: "stimuli/wav/reminder_10.wav"},
-    {file: "stimuli/wav/reminder_11.wav"},
-    {file: "stimuli/wav/reminder_12.wav"},
+    "stimuli/wav/reminder_1.wav",
+    "stimuli/wav/reminder_2.wav",
+    "stimuli/wav/reminder_3.wav",
+    "stimuli/wav/reminder_4.wav",
+    "stimuli/wav/reminder_5.wav",
+    "stimuli/wav/reminder_6.wav",
+    "stimuli/wav/reminder_7.wav",
+    "stimuli/wav/reminder_8.wav",
+    "stimuli/wav/reminder_9.wav",
+    "stimuli/wav/reminder_10.wav",
+    "stimuli/wav/reminder_11.wav",
+    "stimuli/wav/reminder_12.wav",
 ];
 
 function _extractObjectItems(items, keys) {
@@ -202,19 +202,18 @@ function getImgStimuli() {
 function getAudioStimuli() {
     prepare_stimuli();
     let ret = PRACTICE_LIST.concat(LIST_1)
-        .concat(DELAYED_AUDIO)
-        .concat(HESITANT_AUDIO)
-        .concat(REMINDER_AUDIO) 
         .flatMap((item) => {
             let temp = [];
             if (item.space_resp)
                 temp.push(item.space_resp);
             if (item.r_resp)
                 temp.push(item.r_resp);
-            if (item.file)
-                temp.push(item.file);
             return temp;
         });
+
+    ret = ret.concat(DELAYED_AUDIO)
+        .concat(HESITANT_AUDIO)
+        .concat(REMINDER_AUDIO);
 
     // ret.push(GOODBYE_WAV);
     ret.push(GREETING_WAV);

@@ -46,15 +46,15 @@ class SoundBoardTrial {
                 default: null
             },
             delayed_sound: {
-                type: jsPsychModule.ParameterType.OBJECT,
+                type: jsPsychModule.ParameterType.STRING,
                 default: null
             },
             hesitant_sound: {
-                type: jsPsychModule.ParameterType.OBJECT,
+                type: jsPsychModule.ParameterType.STRING,
                 default: null
             },
             reminder_sound: {
-                type: jsPsychModule.ParameterType.OBJECT,
+                type: jsPsychModule.ParameterType.STRING,
                 default: null
             },
             end_delay: {
@@ -113,20 +113,17 @@ class SoundBoardTrial {
                 break;
             case 'g':
                 if (trial.delayed_sound) {
-                    this.playSound(trial.delayed_sound.file, indicator);
-                    trial.delayed_sound.played = true;
+                    this.playSound(trial.delayed_sound, indicator);
                 }
                 break;
             case 'p':
                 if (trial.hesitant_sound) {
-                    this.playSound(trial.hesitant_sound.file, indicator);
-                    trial.hesitant_sound.played = true;
+                    this.playSound(trial.hesitant_sound, indicator);
                 }
                 break;
             case 'l':
                 if (trial.reminder_sound) {
-                    this.playSound(trial.hesitant_sound.file, indicator);
-                    trial.reminder_sound.played = true;
+                    this.playSound(trial.hesitant_sound, indicator);
                 }
                 break;
             case 'arrowright':
