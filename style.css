@@ -16,6 +16,11 @@ img.top_pic {
     height: 500px;
 }
 
+img.instruction1 {
+    width: auto;
+    height: 300px;
+}
+
 img.thumbnail {
     width: auto;
     height: 150px;
