@@ -22,3 +22,8 @@ img.thumbnail {
     padding: 25px;
 }
 
+div.instruction {
+    text-align: left;
+    font-size: .8em;
+    line-height: 1.5;
+}

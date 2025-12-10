@@ -25,38 +25,41 @@ let start_screen = {
     }
 };
 
+let instruction_title = "Instructions";
+let instruction_text = `You and your partner will collaborate to play a 
+picture-matching game. One of you will see a picture with incomplete information 
+(such as pic 1, the missing information is always one of: the subject, the action,
+or the object), while the other will see the picture with the complete information
+(such as pic 2): A rabbit is burying a vegetable. The person with incomplete
+information needs to ask the partner for the missing information: e.g.,
+What is the rabbit doing with a vegetable?, and then find the matching picture
+from below and click on it. This person can ask the partner to repeat, but just
+once. Please always use complete sentences. Click the continue buttons to start the
+practice.
+`
 
 let instructions = {
-    type: SoundBoardTrial,
+    type: jsPsychHtmlButtonResponse,
     stimulus: `
-<div style="text-align: left; font-size: .8em;">欢迎参加这个实验。</div>
-<div style="text-align: left; font-size: .8em;">
-游戏由你主导。游戏开始时，你会看到图1，同伴看到的是图2，请你根据自己图中的图形排列，告诉同伴问号处应该出现什么图形，例如，图中黑色方块和粉色三角交替出现，那么接下来出现的可能是黑色方块，你可以告诉同伴I think we need a black square。同伴就会在她的图中找到黑色方块对应的单词land，并告诉你So we should choose land。你仅有一次机会请你的同伴重复她指的是哪个词。游戏由你语音控制，你需要清晰地说出你们团队的选择，如We choose land。电脑将识别并高亮出你们的答案，如图3。一旦答案被识别，就不能修改，系统会自动跳到下一题。如果没识别成功，请你再说一遍答案。</div>
-
-<div style="display: flex; justify-content: space-around">
-<table>
-<tr><td>你的屏幕</td></tr>
-<tr><td><img src="stimuli/img/ins1.png" style="width:300px"></td><td>图1</td></tr>
-<tr><td><img src="stimuli/img/ins3.png" style="width:300px"></td><td>图3</td></tr>
-</table>
-
-<table>
-<tr><td>同伴的屏幕</td></tr>
-<tr><td><img src="stimuli/img/ins2.png" style="width:300px"></td><td>图2</td></tr>
-<tr><td><div style="width: 300px; height: 185px"></div></td></tr>
-</table>
-
-</div>
-
-<div style="text-align: left; font-size: .8em;">
-句子怎么说都行，也没有时间限制。如果有问题，可以用中文问。接下来有三个练习，期间你还是可以提问。练习结束后，游戏正式开始，那时你就要全程用英文了。
-</div>
-<center style="margin-top: .5em;"> 说 “I am ready” 开始练习。</center>
+    <div class="instruction">
+        <h1>${instruction_title}</h1>
+        <p>${instruction_text}</p>
+    </div>
+    <div>
+        <table style="margin:auto;">
+            <tr>
+                <td>pic 1</td>
+                <td>pic 2</td>
+            </tr>
+            <tr>
+                <td><image src="stimuli/img/Instruction_0.png" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/instruction_partner_0.png" alt="Oops picture not found"/></td>
+            </tr>
+        </table>
     </div>
     `,
+    choices: ["Continue"]
 
-    first_sound: 'stimuli/wav/Greeting.wav',
-    record: false
 };
 
 let preload_media = {
