@@ -133,7 +133,9 @@ let trial_procedure = {
     delayed_sound: () => pop_and_requeue_stimulus(DELAYED_AUDIO),
     hesitant_sound: () => pop_and_requeue_stimulus(HESITANT_AUDIO),
     reminder_sound: () => pop_and_requeue_stimulus(REMINDER_AUDIO),
-    end_delay: 100,
+    end_delay: 300,
+    select_by_mouse: true,
+    selection_ends_trials: true,
     on_finish: function(data) {
         data.id = jsPsych.timelineVariable('id');
     }

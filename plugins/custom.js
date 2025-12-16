@@ -65,8 +65,17 @@ class SoundBoardTrial {
                 type: jsPsychModule.ParameterType.BOOLEAN,
                 default: true
             },
+            select_by_mouse: { // Select class by mouse clicks instead of keyboard
+                type: jsPsychModule.ParameterType.BOOLEAN,
+                default: false
+            },
+            selection_ends_trials: { // a selection terminates trial instead of forward arrow
+                type: jsPsychModule.ParameterType.BOOLEAN,
+                default: false
+            }
         }
     }
+
     constructor(jsPsych) {
         this.jsPsych = jsPsych;
         this.playing = false;
@@ -165,6 +174,9 @@ class SoundBoardTrial {
 
             let target = display_element.querySelectorAll('.word')[idx];
             if (target) target.classList.add('highlight');
+            if (trial.selection_ends_trials) {
+                end_trial();
+            }
         };
 
         display_element.innerHTML = trial.stimulus;
@@ -173,6 +185,17 @@ class SoundBoardTrial {
         if (trial.record) {
             recorder.clear();
             recorder.record();
+        }
+
+        if (trial.select_by_mouse) {
+            let words = display_element.querySelectorAll('.word')
+            words.forEach(
+                (element, index) => {
+                element.customIndex = index;
+                element.addEventListener("click", (element) => {
+                    highlightWord(element.currentTarget.customIndex);
+                });
+            });
         }
     }
 
