@@ -172,9 +172,9 @@ function initExperiment() {
     preload_media.images = getImgStimuli();
 
     timeline.push(start_screen);
-    timeline.push(preload_media);
+//    timeline.push(preload_media);
     timeline.push(initialize_microphone);
-    timeline.push(instructions);
+//    timeline.push(instructions);
 
     timeline.push({
         timeline: [trial_procedure],
@@ -186,6 +186,10 @@ function initExperiment() {
     timeline.push({
         timeline: [trial_procedure],
         timeline_variables: LIST_1
+    });
+
+    timeline.push({
+        timeline: getPart2Procedure()
     });
 
     timeline.push(end_screen);
