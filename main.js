@@ -39,16 +39,34 @@ let instructions = {
                 <td>pic 2</td>
             </tr>
             <tr>
-                <td><image src="stimuli/img/Instruction_0.png" class="instruction1" alt="Oops picture not found"/></td>
-                <td><image src="stimuli/img/instruction_partner_0.png" class="instruction1" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/Instruction_0.png"
+                           class="instruction1"
+                           alt="Oops picture not found"/>
+                </td>
+                <td><image src="stimuli/img/instruction_partner_0.png"
+                           class="instruction1"
+                           alt="Oops picture not found"/>
+                </td>
             </tr>
         </table>
         <table style="margin:auto;">
             <tr>
-                <td><image src="stimuli/img/instruction_1.png" class="instruction2" alt="Oops picture not found"/></td>
-                <td><image src="stimuli/img/instruction_2.png" class="instruction2" alt="Oops picture not found"/></td>
-                <td><image src="stimuli/img/instruction_3.png" class="instruction2" alt="Oops picture not found"/></td>
-                <td><image src="stimuli/img/instruction_4.png" class="instruction2" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/instruction_1.png"
+                           class="instruction2"
+                           alt="Oops picture not found"/>
+                </td>
+                <td><image src="stimuli/img/instruction_2.png"
+                           class="instruction2"
+                           alt="Oops picture not found"/>
+                </td>
+                <td><image src="stimuli/img/instruction_3.png"
+                           class="instruction2"
+                           alt="Oops picture not found"/>
+                </td>
+                <td><image src="stimuli/img/instruction_4.png"
+                           class="instruction2"
+                           alt="Oops picture not found"/>
+                </td>
             </tr>
         </table>
     </div>
@@ -172,21 +190,21 @@ function initExperiment() {
     preload_media.images = getImgStimuli();
 
     timeline.push(start_screen);
-//    timeline.push(preload_media);
+    timeline.push(preload_media);
     timeline.push(initialize_microphone);
 //    timeline.push(instructions);
 
-    timeline.push({
-        timeline: [trial_procedure],
-        timeline_variables: PRACTICE_LIST
-    });
+//    timeline.push({
+//        timeline: [trial_procedure],
+//        timeline_variables: PRACTICE_LIST
+//    });
 
-    timeline.push(test_intro);
-
-    timeline.push({
-        timeline: [trial_procedure],
-        timeline_variables: LIST_1
-    });
+//    timeline.push(test_intro);
+//
+//    timeline.push({
+//        timeline: [trial_procedure],
+//        timeline_variables: LIST_1
+//    });
 
     timeline.push({
         timeline: getPart2Procedure()
