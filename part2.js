@@ -1,4 +1,33 @@
 
+let P2Instruction = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `
+    <div class="instruction">
+        <h1>${instruction_title_p2}</h1>
+        <p>${instruction_text_p2}</p>
+    </div>
+    <div>
+        <table style="margin:auto;">
+            <tr>
+                <td>pic 1</td>
+                <td>pic 2</td>
+            </tr>
+            <tr>
+                <td><image src="stimuli/img/instruction_0.png"
+                           class="instruction1"
+                           alt="Oops picture not found"/>
+                </td>
+                <td><image src="stimuli/img/instruction_1.png"
+                           class="instruction1"
+                           alt="Oops picture not found"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    `,
+    choices: ["Continue"]
+};
+
 let P2Trial = {
     type: SoundBoardTrial,
     stimulus: () => {
@@ -28,17 +57,15 @@ let AudioFeedback = {
     trial_ends_after_audio: true
 }
 
-
 let DuoPartTimeline = {
     timeline : [P2Trial, AudioFeedback],
     timeline_variables: P2_LIST,
 }
 
-
-
 function getPart2Procedure() {
     DuoPartTimeline.timeline_variables = getList(2);
     let timeline = [
+        P2Instruction,
         DuoPartTimeline
     ]
     return timeline
