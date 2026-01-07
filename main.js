@@ -39,16 +39,34 @@ let instructions = {
                 <td>pic 2</td>
             </tr>
             <tr>
-                <td><image src="stimuli/img/Instruction_0.png" class="instruction1" alt="Oops picture not found"/></td>
-                <td><image src="stimuli/img/instruction_partner_0.png" class="instruction1" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/Instruction_0.png"
+                           class="instruction1"
+                           alt="Oops picture not found"/>
+                </td>
+                <td><image src="stimuli/img/instruction_partner_0.png"
+                           class="instruction1"
+                           alt="Oops picture not found"/>
+                </td>
             </tr>
         </table>
         <table style="margin:auto;">
             <tr>
-                <td><image src="stimuli/img/instruction_1.png" class="instruction2" alt="Oops picture not found"/></td>
-                <td><image src="stimuli/img/instruction_2.png" class="instruction2" alt="Oops picture not found"/></td>
-                <td><image src="stimuli/img/instruction_3.png" class="instruction2" alt="Oops picture not found"/></td>
-                <td><image src="stimuli/img/instruction_4.png" class="instruction2" alt="Oops picture not found"/></td>
+                <td><image src="stimuli/img/instruction_1.png"
+                           class="instruction2"
+                           alt="Oops picture not found"/>
+                </td>
+                <td><image src="stimuli/img/instruction_2.png"
+                           class="instruction2"
+                           alt="Oops picture not found"/>
+                </td>
+                <td><image src="stimuli/img/instruction_3.png"
+                           class="instruction2"
+                           alt="Oops picture not found"/>
+                </td>
+                <td><image src="stimuli/img/instruction_4.png"
+                           class="instruction2"
+                           alt="Oops picture not found"/>
+                </td>
             </tr>
         </table>
     </div>
@@ -185,7 +203,11 @@ function initExperiment() {
 
     timeline.push({
         timeline: [trial_procedure],
-        timeline_variables: LIST_1
+        timeline_variables: getList(1)
+    });
+
+    timeline.push({
+        timeline: getPart2Procedure()
     });
 
     timeline.push(end_screen);

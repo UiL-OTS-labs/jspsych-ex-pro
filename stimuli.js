@@ -10,6 +10,14 @@ const FOLDER_IMG = "stimuli/img/";
 const GOODBYE_WAV = 'stimuli/wav/Goodbye.wav';
 const GREETING_WAV = 'stimuli/wav/greeting.wav';
 
+/*
+ * For debugging purposes only
+ */
+function _run_short() {
+    let qs = new URLSearchParams(window.location.search);
+    return Boolean(qs.get("short"))
+}
+
 function _prepare_images() {
     function prepare_image(row, index, array) {
         function sanitize_image(img_name) {
@@ -20,16 +28,19 @@ function _prepare_images() {
             return `${FOLDER_IMG}${img}`
         }
         row.img = sanitize_image(row.img)
-        row.thumbnails.forEach((value, index, array) => {
-            if (value === null || value === undefined || value === "")
-                return;
-            array[index] = sanitize_image(value);
-        });
-        array[index] = row;
+        if (Array.isArray(row.thumbnails)) {
+            row.thumbnails.forEach((value, index, array) => {
+                if (value === null || value === undefined || value === "")
+                    return;
+                array[index] = sanitize_image(value);
+            });
+            array[index] = row;
+        }
     }
 
     PRACTICE_LIST.forEach(prepare_image);
     LIST_1.forEach(prepare_image);
+    P2_LIST.forEach(prepare_image);
 }
 
 function _prepare_wavs() {
@@ -50,19 +61,25 @@ function _prepare_wavs() {
             row.r_resp = sanitize_wav(row.r_resp);
         if (row.file !== undefined)
             row.file = sanitize_wav(row.file);
+        if (row.click !== undefined)
+            row.click = sanitize_wav(row.click);
         array[index] = row;
     }
 
     PRACTICE_LIST.forEach(prepare_wav);
     LIST_1.forEach(prepare_wav);
+    P2_LIST.forEach(prepare_wav);
 }
 
 function prepare_stimuli() {
     // only do this once.
     if (prepare_stimuli.done === undefined) {
-        PRACTICE_LIST = prac_items
-        LIST_1 = test_items
+        PRACTICE_LIST = prac_items;
+        P2_PRACTICE_LIST = p2_prac_items;
+        LIST_1 = test_items;
         LIST_1 = prepare_test_trials(LIST_1);
+        P2_LIST = p2_test_items;
+        P2_LIST = uil.randomization.randomShuffle(P2_LIST);
         _prepare_images();
         _prepare_wavs();
         prepare_stimuli.done = true;
@@ -94,11 +111,23 @@ function prepare_test_trials(trials) {
 }
 
 
-PRACTICE_LIST = [
-];
+let PRACTICE_LIST = [];
+let P2_PRACTICE_LIST = []; // part two
 
-LIST_1 = [
-];
+let LIST_1 = [];
+let P2_LIST = []; // part two
+
+function getList(part) {
+    if (part != 1 && part != 2) {
+        throw Exception("The argument part must be 1 or 2");
+    }
+
+    let list = part === 1 ? LIST_1 : P2_LIST;
+    if (_run_short()) {
+        return list.slice(0,4);
+    }
+    return list;
+}
 
 
 const DELAYED_AUDIO = [
@@ -178,14 +207,16 @@ function getImgStimuli() {
     prepare_stimuli();
     let ret = PRACTICE_LIST.concat(LIST_1).flatMap( (item) => {
         let array = [item.img];
-        item.thumbnails.forEach(
-            (thumb) => {
-                // When we have thumbnails extract them
-                if (thumb !== "") {
-                    array.push(thumb);
+        if (Array.isArray(item.thumbnails)) {
+            item.thumbnails.forEach(
+                (thumb) => {
+                    // When we have thumbnails extract them
+                    if (thumb !== "") {
+                        array.push(thumb);
+                    }
                 }
-            }
-        );
+            );
+        }
         return array;
     })
     
@@ -208,6 +239,8 @@ function getAudioStimuli() {
                 temp.push(item.space_resp);
             if (item.r_resp)
                 temp.push(item.r_resp);
+            if (item.click)
+                temp.push(item.click)
             return temp;
         });
 
