@@ -149,6 +149,7 @@ class SoundBoardTrial {
         });
 
         let end_trial = () => {
+            display_element.innerHTML = "";
             this.jsPsych.pluginAPI.cancelKeyboardResponse(keyboardListener);
             if (!trial.record) {
                 this.jsPsych.finishTrial({});
