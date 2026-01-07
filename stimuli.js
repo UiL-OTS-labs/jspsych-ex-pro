@@ -10,6 +10,14 @@ const FOLDER_IMG = "stimuli/img/";
 const GOODBYE_WAV = 'stimuli/wav/Goodbye.wav';
 const GREETING_WAV = 'stimuli/wav/greeting.wav';
 
+/*
+ * For debugging purposes only
+ */
+function _run_short() {
+    let qs = new URLSearchParams(window.location.search);
+    return Boolean(qs.get("short"))
+}
+
 function _prepare_images() {
     function prepare_image(row, index, array) {
         function sanitize_image(img_name) {
@@ -109,7 +117,18 @@ let P2_PRACTICE_LIST = []; // part two
 let LIST_1 = [];
 let P2_LIST = []; // part two
 
-function getPart2List() {return P2_LIST;}
+function getList(part) {
+    if (part != 1 && part != 2) {
+        throw Exception("The argument part must be 1 or 2");
+    }
+
+    let list = part === 1 ? LIST_1 : P2_LIST;
+    if (_run_short()) {
+        return list.slice(0,4);
+    }
+    return list;
+}
+
 
 const DELAYED_AUDIO = [
     'stimuli/wav/delay_1.wav',

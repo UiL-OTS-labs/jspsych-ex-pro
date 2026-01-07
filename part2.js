@@ -37,7 +37,7 @@ let DuoPartTimeline = {
 
 
 function getPart2Procedure() {
-    DuoPartTimeline.timeline_variables = getPart2List();
+    DuoPartTimeline.timeline_variables = getList(2);
     let timeline = [
         DuoPartTimeline
     ]
