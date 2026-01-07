@@ -192,19 +192,19 @@ function initExperiment() {
     timeline.push(start_screen);
     timeline.push(preload_media);
     timeline.push(initialize_microphone);
-//    timeline.push(instructions);
+    timeline.push(instructions);
 
-//    timeline.push({
-//        timeline: [trial_procedure],
-//        timeline_variables: PRACTICE_LIST
-//    });
+    timeline.push({
+        timeline: [trial_procedure],
+        timeline_variables: PRACTICE_LIST
+    });
 
-//    timeline.push(test_intro);
-//
-//    timeline.push({
-//        timeline: [trial_procedure],
-//        timeline_variables: LIST_1
-//    });
+    timeline.push(test_intro);
+
+    timeline.push({
+        timeline: [trial_procedure],
+        timeline_variables: getList(1)
+    });
 
     timeline.push({
         timeline: getPart2Procedure()
