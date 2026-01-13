@@ -132,7 +132,7 @@ class SoundBoardTrial {
                 break;
             case 'l':
                 if (trial.reminder_sound) {
-                    this.playSound(trial.hesitant_sound, indicator);
+                    this.playSound(trial.reminder_sound, indicator);
                 }
                 break;
             case 'arrowright':
