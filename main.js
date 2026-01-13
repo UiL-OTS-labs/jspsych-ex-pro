@@ -161,10 +161,9 @@ let trial_procedure = {
 
 
 let test_intro = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: `<div>This is the end of the practice part.</div>
-        <div>Say “I am ready” to start the game.</div>`,
-    choices: ["ArrowRight"]
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `<div style="instruction">This is the end of the practice part.</div>`,
+    choices: ["Continue"]
 }
 
 jsPsych.pluginAPI.initializeMicrophoneRecorder = function(stream) {
