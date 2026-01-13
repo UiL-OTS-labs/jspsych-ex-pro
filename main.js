@@ -93,7 +93,7 @@ let end_screen = {
     on_start : function(data) {
         jsPsych.data.get().localSave(
             'csv',
-            'E1S2_PP' + jsPsych.data.dataProperties.ppid.padStart(4, 0) + '.csv'
+            'E2S2_PP' + jsPsych.data.dataProperties.ppid.padStart(4, 0) + '.csv'
         );
     },
     first_sound: GOODBYE_WAV,
