@@ -33,37 +33,41 @@ let instructions = {
         <p>${instruction_text}</p>
     </div>
     <div>
-        <table style="margin:auto;">
+        <table class="img_table" style="margin:auto;">
             <tr>
-                <td>pic 1</td>
-                <td>pic 2</td>
+                <td colspan="4" class="border_right">pic 1</td>
+                <td colspan="4">pic 2</td>
             </tr>
             <tr>
-                <td><image src="stimuli/img/Instruction_0.png"
+                <td colspan="4" class="border_right">
+                    <image src="stimuli/img/Instruction_0.png"
                            class="instruction1"
                            alt="Oops picture not found"/>
                 </td>
-                <td><image src="stimuli/img/instruction_partner_0.png"
+                <td colspan="4" rowspan="2">
+                    <image src="stimuli/img/instruction_partner_0.png"
                            class="instruction1"
                            alt="Oops picture not found"/>
                 </td>
             </tr>
-        </table>
-        <table style="margin:auto;">
             <tr>
-                <td><image src="stimuli/img/instruction_1.png"
+                <td colspan="1">
+                    <image src="stimuli/img/instruction_1.png"
                            class="instruction2"
                            alt="Oops picture not found"/>
                 </td>
-                <td><image src="stimuli/img/instruction_2.png"
+                <td colspan="1">
+                    <image src="stimuli/img/instruction_2.png"
                            class="instruction2"
                            alt="Oops picture not found"/>
                 </td>
-                <td><image src="stimuli/img/instruction_3.png"
+                <td colspan="1">
+                    <image src="stimuli/img/instruction_3.png"
                            class="instruction2"
                            alt="Oops picture not found"/>
                 </td>
-                <td><image src="stimuli/img/instruction_4.png"
+                <td colspan="1" class="border_right">
+                    <image src="stimuli/img/instruction_4.png"
                            class="instruction2"
                            alt="Oops picture not found"/>
                 </td>

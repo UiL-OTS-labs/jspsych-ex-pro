@@ -37,3 +37,12 @@ div.instruction {
     font-size: .8em;
     line-height: 1.5;
 }
+
+table.img_table {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.border_right {
+    border-right: 2px solid black
+}
