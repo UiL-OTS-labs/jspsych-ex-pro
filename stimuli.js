@@ -61,7 +61,7 @@ function _prepare_wavs() {
             row.r_resp = sanitize_wav(row.r_resp);
         if (row.file !== undefined)
             row.file = sanitize_wav(row.file);
-        if (row.click !== undefined)
+        if (row.click !== undefined && row.click !== "")
             row.click = sanitize_wav(row.click);
         array[index] = row;
     }
