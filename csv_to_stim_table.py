@@ -24,7 +24,7 @@ class NoSuchStimulus(FileNotFoundError):
 def extract_wavs(stimuli: dict) -> set[str]:
     wav_files = set()
     for stim in stimuli:
-        for pic in ["space_resp", "r_resp"]:
+        for pic in ["space_resp", "r_resp", "click"]:
             path = stim[pic]
             if path:
                 wav_files.add(f"./stimuli/wav/{path}")
@@ -82,6 +82,7 @@ def parse_csv(filename: str, separator=",") -> [dict]:
                 ],
                 "space_resp": obj["space_resp"],
                 "r_resp": obj["r_resp"],
+                "click": obj["click"],
             }
             for obj in reader
         ]

@@ -10,7 +10,8 @@ let prac_items = [
             "practice_1_exp_4.png"
         ],
         space_resp: "practice_1_exp_1st.wav",
-        r_resp: "practice_1_exp_2nd.wav"
+        r_resp: "practice_1_exp_2nd.wav",
+        click: ""
     },
     {
         type: "practice_production",
@@ -23,7 +24,8 @@ let prac_items = [
             ""
         ],
         space_resp: "practice_1_pro_1st.wav",
-        r_resp: "practice_1_pro_2nd.wav"
+        r_resp: "practice_1_pro_2nd.wav",
+        click: ""
     },
     {
         type: "practice_exposure",
@@ -36,7 +38,8 @@ let prac_items = [
             "practice_2_exp_4.png"
         ],
         space_resp: "practice_2_exp_1st.wav",
-        r_resp: "practice_2_exp_2nd.wav"
+        r_resp: "practice_2_exp_2nd.wav",
+        click: ""
     },
     {
         type: "practice_production",
@@ -49,7 +52,8 @@ let prac_items = [
             ""
         ],
         space_resp: "practice_2_pro_1st.wav",
-        r_resp: "practice_2_pro_2nd.wav"
+        r_resp: "practice_2_pro_2nd.wav",
+        click: ""
     }
 ]
 let test_items = [
@@ -64,7 +68,8 @@ let test_items = [
             "throw_1a_exp_4.png"
         ],
         space_resp: "throw_1a_exp_1st.wav",
-        r_resp: "throw_1a_exp_2nd.wav"
+        r_resp: "throw_1a_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -77,7 +82,8 @@ let test_items = [
             "throw_1b_exp_4.png"
         ],
         space_resp: "throw_1b_exp_1st.wav",
-        r_resp: "throw_1b_exp_2nd.wav"
+        r_resp: "throw_1b_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -90,7 +96,8 @@ let test_items = [
             "throw_1c_exp_4.png"
         ],
         space_resp: "throw_1c_exp_1st.wav",
-        r_resp: "throw_1c_exp_2nd.wav"
+        r_resp: "throw_1c_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -103,7 +110,8 @@ let test_items = [
             "throw_2a_exp_4.png"
         ],
         space_resp: "throw_2a_exp_1st.wav",
-        r_resp: "throw_2a_exp_2nd.wav"
+        r_resp: "throw_2a_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -116,7 +124,8 @@ let test_items = [
             "throw_2b_exp_4.png"
         ],
         space_resp: "throw_2b_exp_1st.wav",
-        r_resp: "throw_2b_exp_2nd.wav"
+        r_resp: "throw_2b_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -129,7 +138,8 @@ let test_items = [
             "throw_2c_exp_4.png"
         ],
         space_resp: "throw_2c_exp_1st.wav",
-        r_resp: "throw_2c_exp_2nd.wav"
+        r_resp: "throw_2c_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -142,7 +152,8 @@ let test_items = [
             "cut_1a_exp_4.png"
         ],
         space_resp: "cut_1a_exp_1st.wav",
-        r_resp: "cut_1a_exp_2nd.wav"
+        r_resp: "cut_1a_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -155,7 +166,8 @@ let test_items = [
             "cut_1b_exp_4.png"
         ],
         space_resp: "cut_1b_exp_1st.wav",
-        r_resp: "cut_1b_exp_2nd.wav"
+        r_resp: "cut_1b_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -168,7 +180,8 @@ let test_items = [
             "cut_1c_exp_4.png"
         ],
         space_resp: "cut_1c_exp_1st.wav",
-        r_resp: "cut_1c_exp_2nd.wav"
+        r_resp: "cut_1c_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -181,7 +194,8 @@ let test_items = [
             "cut_2a_exp_4.png"
         ],
         space_resp: "cut_2a_exp_1st.wav",
-        r_resp: "cut_2a_exp_2nd.wav"
+        r_resp: "cut_2a_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -194,7 +208,8 @@ let test_items = [
             "cut_2b_exp_4.png"
         ],
         space_resp: "cut_2b_exp_1st.wav",
-        r_resp: "cut_2b_exp_2nd.wav"
+        r_resp: "cut_2b_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -207,7 +222,8 @@ let test_items = [
             "cut_2c_exp_4.png"
         ],
         space_resp: "cut_2c_exp_1st.wav",
-        r_resp: "cut_2c_exp_2nd.wav"
+        r_resp: "cut_2c_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -220,7 +236,8 @@ let test_items = [
             "cook_1a_exp_4.png"
         ],
         space_resp: "cook_1a_exp_1st.wav",
-        r_resp: "cook_1a_exp_2nd.wav"
+        r_resp: "cook_1a_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -233,7 +250,8 @@ let test_items = [
             "cook_1b_exp_4.png"
         ],
         space_resp: "cook_1b_exp_1st.wav",
-        r_resp: "cook_1b_exp_2nd.wav"
+        r_resp: "cook_1b_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -246,7 +264,8 @@ let test_items = [
             "cook_1c_exp_4.png"
         ],
         space_resp: "cook_1c_exp_1st.wav",
-        r_resp: "cook_1c_exp_2nd.wav"
+        r_resp: "cook_1c_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -259,7 +278,8 @@ let test_items = [
             "cook_2a_exp_4.png"
         ],
         space_resp: "cook_2a_exp_1st.wav",
-        r_resp: "cook_2a_exp_2nd.wav"
+        r_resp: "cook_2a_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -272,7 +292,8 @@ let test_items = [
             "cook_2b_exp_4.png"
         ],
         space_resp: "cook_2b_exp_1st.wav",
-        r_resp: "cook_2b_exp_2nd.wav"
+        r_resp: "cook_2b_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -285,7 +306,8 @@ let test_items = [
             "cook_2c_exp_4.png"
         ],
         space_resp: "cook_2c_exp_1st.wav",
-        r_resp: "cook_2c_exp_2nd.wav"
+        r_resp: "cook_2c_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -298,7 +320,8 @@ let test_items = [
             "wash_1a_exp_4.png"
         ],
         space_resp: "wash_1a_exp_1st.wav",
-        r_resp: "wash_1a_exp_2nd.wav"
+        r_resp: "wash_1a_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -311,7 +334,8 @@ let test_items = [
             "wash_1b_exp_4.png"
         ],
         space_resp: "wash_1b_exp_1st.wav",
-        r_resp: "wash_1b_exp_2nd.wav"
+        r_resp: "wash_1b_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -324,7 +348,8 @@ let test_items = [
             "wash_1c_exp_4.png"
         ],
         space_resp: "wash_1c_exp_1st.wav",
-        r_resp: "wash_1c_exp_2nd.wav"
+        r_resp: "wash_1c_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -337,7 +362,8 @@ let test_items = [
             "wash_2a_exp_4.png"
         ],
         space_resp: "wash_2a_exp_1st.wav",
-        r_resp: "wash_2a_exp_2nd.wav"
+        r_resp: "wash_2a_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -350,7 +376,8 @@ let test_items = [
             "wash_2b_exp_4.png"
         ],
         space_resp: "wash_2b_exp_1st.wav",
-        r_resp: "wash_2b_exp_2nd.wav"
+        r_resp: "wash_2b_exp_2nd.wav",
+        click: ""
     },
     {
         type: "exposure",
@@ -363,7 +390,8 @@ let test_items = [
             "wash_2c_exp_4.png"
         ],
         space_resp: "wash_2c_exp_1st.wav",
-        r_resp: "wash_2c_exp_2nd.wav"
+        r_resp: "wash_2c_exp_2nd.wav",
+        click: ""
     },
     {
         type: "production",
@@ -376,7 +404,8 @@ let test_items = [
             ""
         ],
         space_resp: "throw_1a_pro_1st.wav",
-        r_resp: "throw_1a_pro_2nd.wav"
+        r_resp: "throw_1a_pro_2nd.wav",
+        click: "deatec_a_2nd.wav"
     },
     {
         type: "production",
@@ -389,7 +418,8 @@ let test_items = [
             ""
         ],
         space_resp: "throw_1b_pro_1st.wav",
-        r_resp: "throw_1b_pro_2nd.wav"
+        r_resp: "throw_1b_pro_2nd.wav",
+        click: "deatec_b_2nd.wav"
     },
     {
         type: "production",
@@ -402,7 +432,8 @@ let test_items = [
             ""
         ],
         space_resp: "throw_1c_pro_1st.wav",
-        r_resp: "throw_1c_pro_2nd.wav"
+        r_resp: "throw_1c_pro_2nd.wav",
+        click: "seapec_a_2nd.wav"
     },
     {
         type: "production",
@@ -415,7 +446,8 @@ let test_items = [
             ""
         ],
         space_resp: "throw_2a_pro_1st.wav",
-        r_resp: "throw_2a_pro_2nd.wav"
+        r_resp: "throw_2a_pro_2nd.wav",
+        click: "seapec_b_2nd.wav"
     },
     {
         type: "production",
@@ -428,7 +460,8 @@ let test_items = [
             ""
         ],
         space_resp: "throw_2b_pro_1st.wav",
-        r_resp: "throw_2b_pro_2nd.wav"
+        r_resp: "throw_2b_pro_2nd.wav",
+        click: "teakec_a_2nd.wav"
     },
     {
         type: "production",
@@ -441,7 +474,8 @@ let test_items = [
             ""
         ],
         space_resp: "throw_2c_pro_1st.wav",
-        r_resp: "throw_2c_pro_2nd.wav"
+        r_resp: "throw_2c_pro_2nd.wav",
+        click: "teakec_b_2nd.wav"
     },
     {
         type: "production",
@@ -454,7 +488,8 @@ let test_items = [
             ""
         ],
         space_resp: "cut_1a_pro_1st.wav",
-        r_resp: "cut_1a_pro_2nd.wav"
+        r_resp: "cut_1a_pro_2nd.wav",
+        click: "zeatec_a_2nd.wav"
     },
     {
         type: "production",
@@ -467,7 +502,8 @@ let test_items = [
             ""
         ],
         space_resp: "cut_1b_pro_1st.wav",
-        r_resp: "cut_1b_pro_2nd.wav"
+        r_resp: "cut_1b_pro_2nd.wav",
+        click: "zeatec_b_2nd.wav"
     },
     {
         type: "production",
@@ -480,7 +516,8 @@ let test_items = [
             ""
         ],
         space_resp: "cut_1c_pro_1st.wav",
-        r_resp: "cut_1c_pro_2nd.wav"
+        r_resp: "cut_1c_pro_2nd.wav",
+        click: "gookec_a_2nd.wav"
     },
     {
         type: "production",
@@ -493,7 +530,8 @@ let test_items = [
             ""
         ],
         space_resp: "cut_2a_pro_1st.wav",
-        r_resp: "cut_2a_pro_2nd.wav"
+        r_resp: "cut_2a_pro_2nd.wav",
+        click: "gookec_b_2nd.wav"
     },
     {
         type: "production",
@@ -506,7 +544,8 @@ let test_items = [
             ""
         ],
         space_resp: "cut_2b_pro_1st.wav",
-        r_resp: "cut_2b_pro_2nd.wav"
+        r_resp: "cut_2b_pro_2nd.wav",
+        click: "goopec_a_2nd.wav"
     },
     {
         type: "production",
@@ -519,7 +558,8 @@ let test_items = [
             ""
         ],
         space_resp: "cut_2c_pro_1st.wav",
-        r_resp: "cut_2c_pro_2nd.wav"
+        r_resp: "cut_2c_pro_2nd.wav",
+        click: "goopec_b_2nd.wav"
     },
     {
         type: "production",
@@ -532,7 +572,8 @@ let test_items = [
             ""
         ],
         space_resp: "cook_1a_pro_1st.wav",
-        r_resp: "cook_1a_pro_2nd.wav"
+        r_resp: "cook_1a_pro_2nd.wav",
+        click: "koosec_a_2nd.wav"
     },
     {
         type: "production",
@@ -545,7 +586,8 @@ let test_items = [
             ""
         ],
         space_resp: "cook_1b_pro_1st.wav",
-        r_resp: "cook_1b_pro_2nd.wav"
+        r_resp: "cook_1b_pro_2nd.wav",
+        click: "koosec_b_2nd.wav"
     },
     {
         type: "production",
@@ -558,7 +600,8 @@ let test_items = [
             ""
         ],
         space_resp: "cook_1c_pro_1st.wav",
-        r_resp: "cook_1c_pro_2nd.wav"
+        r_resp: "cook_1c_pro_2nd.wav",
+        click: "kooshec_a_2nd.wav"
     },
     {
         type: "production",
@@ -571,7 +614,8 @@ let test_items = [
             ""
         ],
         space_resp: "cook_2a_pro_1st.wav",
-        r_resp: "cook_2a_pro_2nd.wav"
+        r_resp: "cook_2a_pro_2nd.wav",
+        click: "kooshec_b_2nd.wav"
     },
     {
         type: "production",
@@ -584,7 +628,8 @@ let test_items = [
             ""
         ],
         space_resp: "cook_2b_pro_1st.wav",
-        r_resp: "cook_2b_pro_2nd.wav"
+        r_resp: "cook_2b_pro_2nd.wav",
+        click: "hakec_a_2nd.wav"
     },
     {
         type: "production",
@@ -597,7 +642,8 @@ let test_items = [
             ""
         ],
         space_resp: "cook_2c_pro_1st.wav",
-        r_resp: "cook_2c_pro_2nd.wav"
+        r_resp: "cook_2c_pro_2nd.wav",
+        click: "hakec_b_2nd.wav"
     },
     {
         type: "production",
@@ -610,7 +656,8 @@ let test_items = [
             ""
         ],
         space_resp: "wash_1a_pro_1st.wav",
-        r_resp: "wash_1a_pro_2nd.wav"
+        r_resp: "wash_1a_pro_2nd.wav",
+        click: "hapec_a_2nd.wav"
     },
     {
         type: "production",
@@ -623,7 +670,8 @@ let test_items = [
             ""
         ],
         space_resp: "wash_1b_pro_1st.wav",
-        r_resp: "wash_1b_pro_2nd.wav"
+        r_resp: "wash_1b_pro_2nd.wav",
+        click: "hapec_b_2nd.wav"
     },
     {
         type: "production",
@@ -636,7 +684,8 @@ let test_items = [
             ""
         ],
         space_resp: "wash_1c_pro_1st.wav",
-        r_resp: "wash_1c_pro_2nd.wav"
+        r_resp: "wash_1c_pro_2nd.wav",
+        click: "hashec_a_2nd.wav"
     },
     {
         type: "production",
@@ -649,7 +698,8 @@ let test_items = [
             ""
         ],
         space_resp: "wash_2a_pro_1st.wav",
-        r_resp: "wash_2a_pro_2nd.wav"
+        r_resp: "wash_2a_pro_2nd.wav",
+        click: "hashec_b_2nd.wav"
     },
     {
         type: "production",
@@ -662,7 +712,8 @@ let test_items = [
             ""
         ],
         space_resp: "wash_2b_pro_1st.wav",
-        r_resp: "wash_2b_pro_2nd.wav"
+        r_resp: "wash_2b_pro_2nd.wav",
+        click: "hathec_a_2nd.wav"
     },
     {
         type: "production",
@@ -675,6 +726,7 @@ let test_items = [
             ""
         ],
         space_resp: "wash_2c_pro_1st.wav",
-        r_resp: "wash_2c_pro_2nd.wav"
+        r_resp: "wash_2c_pro_2nd.wav",
+        click: "hathec_b_2nd.wav"
     }
 ]
