@@ -13,11 +13,11 @@ let P2Instruction = {
                 <td>pic 2</td>
             </tr>
             <tr>
-                <td><image src="stimuli/img/instruction_0.png"
+                <td><image src="stimuli/img/instruction_a_0.png"
                            class="instruction1"
                            alt="Oops picture not found"/>
                 </td>
-                <td><image src="stimuli/img/instruction_1.png"
+                <td><image src="stimuli/img/instruction_aa_0.png"
                            class="instruction1"
                            alt="Oops picture not found"/>
                 </td>
