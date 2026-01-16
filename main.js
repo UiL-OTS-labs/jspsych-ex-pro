@@ -175,6 +175,22 @@ let trial_procedure = {
     }
 };
 
+let click_sound = {
+    type: jsPsychAudioKeyboardResponse,
+    stimulus : function getFeedbackStimulus() {
+        return jsPsych.timelineVariable("click");
+    },
+    trial_ends_after_audio: true
+}
+
+let if_click = {
+    timeline: [click_sound],
+    conditional_function: function() {
+        let click = jsPsych.timelineVariable("click");
+        return click !== undefined && click !== "";
+    }
+}
+
 
 let test_intro = {
     type: jsPsychHtmlButtonResponse,
@@ -210,7 +226,10 @@ function initExperiment() {
     timeline.push(instructions);
 
     timeline.push({
-        timeline: [trial_procedure],
+        timeline: [
+            trial_procedure,
+            if_click
+        ],
         timeline_variables: PRACTICE_LIST
     });
 
@@ -218,7 +237,10 @@ function initExperiment() {
     timeline.push(greeting);
 
     timeline.push({
-        timeline: [trial_procedure],
+        timeline: [
+            trial_procedure,
+            if_click
+        ],
         timeline_variables: getList(1)
     });
 
