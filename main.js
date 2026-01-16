@@ -86,6 +86,18 @@ let preload_media = {
     images: null,  // set in initExperiment
 };
 
+let greeting = {
+    type: jsPsychAudioKeyboardResponse,
+    stimulus : GREETING_WAV,
+    trial_ends_after_audio: true
+}
+
+let goodbye = {
+    type: jsPsychAudioKeyboardResponse,
+    stimulus : GOODBYE_WAV,
+    trial_ends_after_audio: true
+}
+
 
 let score = Math.ceil(Math.random() * 13 + 85);
 
@@ -115,7 +127,7 @@ let end_screen = {
  */
 function pop_and_requeue_stimulus(stimuli) {
     let stimulus = stimuli.shift();
-    stimuli.push(stimulus)
+    stimuli.push(stimulus);
     return stimulus;
 }
 
@@ -203,6 +215,7 @@ function initExperiment() {
     });
 
     timeline.push(test_intro);
+    timeline.push(greeting);
 
     timeline.push({
         timeline: [trial_procedure],
@@ -212,6 +225,8 @@ function initExperiment() {
     timeline.push({
         timeline: getPart2Procedure()
     });
+
+    timeline.push(goodbye);
 
     timeline.push(end_screen);
 

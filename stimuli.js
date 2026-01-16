@@ -7,7 +7,7 @@ const LISTS = ["list1"];
 
 const FOLDER_WAV = "stimuli/wav/";
 const FOLDER_IMG = "stimuli/img/";
-const GOODBYE_WAV = 'stimuli/wav/Goodbye.wav';
+const GOODBYE_WAV = 'stimuli/wav/goodbye.wav';
 const GREETING_WAV = 'stimuli/wav/greeting.wav';
 
 /*
