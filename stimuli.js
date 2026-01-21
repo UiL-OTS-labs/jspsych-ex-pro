@@ -162,42 +162,6 @@ const REMINDER_AUDIO= [
     "stimuli/wav/reminder_12.wav",
 ];
 
-function _extractObjectItems(items, keys) {
-    let array = [];
-    items.forEach(
-        item => {
-            keys.forEach(
-                key => {
-                    let value = item[key];
-                    if (Array.isArray(value)) {
-                        value.forEach(
-                            array_item => {
-                                if (array_item === undefined || array_item === null) { // array_items can be empty
-                                    return;
-                                }
-                                if (typeof array_item !== "string")
-                                    throw new Error(
-                                        "Expected string or array of strings"
-                                    );
-                                array.push(array_item);
-                            }
-                        );
-                    }
-                    else if (typeof value === "string") {
-                        array.push(value);
-                    }
-                    else {
-                        throw new Error(
-                            "Unexpected type, expected an array of string or array"
-                        );
-                    }
-                }
-            );
-        }
-    );
-    return array
-}
-
 /**
  * Returns a list containing all the audio stimuli
  *
