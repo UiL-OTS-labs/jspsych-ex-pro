@@ -162,7 +162,16 @@ class SoundBoardTrial {
                     const reader = new FileReader();
                     reader.addEventListener("load", () => {
                         const base64 = reader.result.split(",")[1];
-                        this.jsPsych.finishTrial({audio: base64});
+                        this.jsPsych.finishTrial(
+                            {
+                                space_sound: trial.space_sound,
+                                r_sound: trial.space_sound,
+                                delayed_sound: trial.delayed_sound,
+                                hesitant_sound: trial.hesitant_sound,
+                                reminder_sound: trial.reminder_sound,
+                                audio: base64
+                            }
+                        );
                     });
                     reader.readAsDataURL(wav);
                 });
