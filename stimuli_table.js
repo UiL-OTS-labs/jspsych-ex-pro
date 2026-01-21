@@ -25,7 +25,7 @@ let prac_items = [
         ],
         space_resp: "practice_1_pro_1st.wav",
         r_resp: "practice_1_pro_2nd.wav",
-        click: ""
+        click: "filler_a_click.wav"
     },
     {
         type: "practice_exposure",
@@ -53,7 +53,7 @@ let prac_items = [
         ],
         space_resp: "practice_2_pro_1st.wav",
         r_resp: "practice_2_pro_2nd.wav",
-        click: ""
+        click: "filler_d_click.wav"
     }
 ]
 let test_items = [
