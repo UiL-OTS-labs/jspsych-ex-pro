@@ -39,6 +39,7 @@ function _prepare_images() {
     }
 
     PRACTICE_LIST.forEach(prepare_image);
+    P2_PRACTICE_LIST.forEach(prepare_image);
     LIST_1.forEach(prepare_image);
     P2_LIST.forEach(prepare_image);
 }
@@ -67,6 +68,7 @@ function _prepare_wavs() {
     }
 
     PRACTICE_LIST.forEach(prepare_wav);
+    P2_PRACTICE_LIST.forEach(prepare_wav);
     LIST_1.forEach(prepare_wav);
     P2_LIST.forEach(prepare_wav);
 }

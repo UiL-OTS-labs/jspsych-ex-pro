@@ -28,6 +28,12 @@ let P2Instruction = {
     choices: ["Continue"]
 };
 
+let test_intro2 = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `<div style="instruction">This is the end of the practice part.</div>`,
+    choices: ["Continue"]
+}
+
 let P2Trial = {
     type: SoundBoardTrial,
     stimulus: () => {
@@ -64,9 +70,17 @@ let DuoPartTimeline = {
 
 function getPart2Procedure() {
     DuoPartTimeline.timeline_variables = getList(2);
+    
+    let PracticeTimeline = {
+        timeline: [P2Trial, AudioFeedback],
+        timeline_variables: P2_PRACTICE_LIST,
+    }
+    
     let timeline = [
         P2Instruction,
+        PracticeTimeline,
+        test_intro2,
         DuoPartTimeline
-    ]
+    ];
     return timeline
 }
